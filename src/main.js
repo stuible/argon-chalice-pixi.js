@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import store from './store'
+import Game from './Game.vue'
 
-createApp(App).mount('#app')
+const game = createApp(Game)
+
+game.use(store);
+game.mount('#game')
