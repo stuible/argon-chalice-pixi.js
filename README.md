@@ -1,6 +1,7 @@
-# argon-chalice-pixi.js
+# argon-chalice-pixi.js (Name is a WIP)
+Argon Chalice if it was a kitschy highschool dating simulator, done in the style of an early 2000s flash game.  So not really Argon Chalice, but ya.  Written using Vue and Pixi.js
 
-## Project setup
+## Development Setup
 ```
 npm install
 ```
@@ -14,11 +15,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
