@@ -14,6 +14,14 @@ export default function (store) {
         // view: document.querySelector('#game')
     });
 
+    store.commit("addDialogue", {name: 'Josh',text: "heheheheheeh"})
+    store.commit("addDialogue", [
+        {name: 'Josh',text: "It's me again heheheheheeh"},
+        {name: 'Josh',text: "Still me heheheheheeh!!!!!!!!!!"},
+        {name: 'Josh',text: "Okay last time"},
+        {name: 'John',text: "I'm actually Josh in disguise"},
+    ])
+
 
     //Key Inputs
     let downKey = keyboard("ArrowDown");

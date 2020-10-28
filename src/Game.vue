@@ -1,16 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <dialog-box :messages="$store.state.dialog"/>
   <div ref="gameView" id="game-view"></div>
 </template>
 
 <script>
 import Game from "./game/index";
-// import HelloWorld from "./components/HelloWorld.vue";
+import DialogBox from "./components/DialogBox";
 
 export default {
   name: "Game",
   components: {
-    // HelloWorld,
+    DialogBox
   },
   mounted() {
     const game = new Game(this.$store);

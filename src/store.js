@@ -7,7 +7,21 @@ export default createStore({
             gameOver: false,
             gameStarted: true,
             paused: false,
-            score: 0
+            score: 0,
+            dialog: []
+        }
+    },
+    mutations: {
+        addDialogue(state, dialog) {
+            if (Array.isArray(dialog)) {
+                state.dialog = state.dialog.concat(dialog);
+            }
+            else if(typeof dialog === 'object' && dialog !== null){
+                state.dialog.push(dialog);
+            }
+        },
+        removeDialog(state){
+            state.dialog.shift()
         }
     }
 })
