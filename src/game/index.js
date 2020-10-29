@@ -1,7 +1,9 @@
 import * as PIXI from 'pixi.js'
 import keyboard from './controls/keyboard'
 
-import { Player, Antlion } from './sprites';
+import Map from './map'
+
+import { Player } from './sprites';
 
 import Camera from './camera';
 
@@ -14,12 +16,22 @@ export default function (store) {
         // view: document.querySelector('#game')
     });
 
-    store.commit("addDialogue", {name: 'Josh',text: "heheheheheeh"})
+    store.commit("addDialogue", { name: 'Josh', question: "This is a question", answers: [
+        {
+            answer: "Right",
+            action: () => console.log("You answered Right")
+        },
+        {
+            answer: "Wrong",
+            action: () => console.log("You answered Wrong")
+        }
+    ] })
+    store.commit("addDialogue", { name: 'Josh', message: "heheheheheeh" })
     store.commit("addDialogue", [
-        {name: 'Josh',text: "It's me again heheheheheeh"},
-        {name: 'Josh',text: "Still me heheheheheeh!!!!!!!!!!"},
-        {name: 'Josh',text: "Okay last time"},
-        {name: 'John',text: "I'm actually Josh in disguise"},
+        { name: 'Josh', message: "It's me again heheheheheeh" },
+        { name: 'Josh', message: "Still me heheheheheeh!!!!!!!!!!" },
+        { name: 'Josh', message: "Okay last time" },
+        { name: 'John', message: "I'm actually Josh in disguise" },
     ])
 
 
@@ -32,10 +44,14 @@ export default function (store) {
     // Camera
     const camera = new Camera(app);
 
+    // Map
+    const map = new Map();
+
     // Player
-    const player = new Player({ speed: store.state.playerSpeed, state: store.state });
+    const player = new Player({ speed: 3, state: store.state, walls: map.walls });
 
     // Add elements to stage
+    app.stage.addChild(map.container);
     app.stage.addChild(player.sprite);
     app.stage.addChild(player.hitbox); // Hitbox has to be added to the stage in order for collition detection to work (aparently)
 

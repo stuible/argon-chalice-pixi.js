@@ -5,13 +5,15 @@ import map from '../helpers/map'
 import { Rotation, Animation } from './utils';
 
 export default class {
-    constructor({ speed, state }) {
+    constructor({ speed, state, walls }) {
         this.sprite = PIXI.Sprite.from(require("@/assets/ant/ant-2.png"));
         this.sprite.anchor.set(0.5);
         this.sprite.width = 50;
         this.sprite.height = 50;
         this.sprite.y = 350;
-        this.sprite.x = 30;
+        this.sprite.x = 200;
+
+        this.walls = walls;
 
         this.animator = new Animation(this.sprite, {
             textures: [
@@ -34,9 +36,16 @@ export default class {
         this.hitbox.tint = 0xFF0000;
         this.hitbox.visible = false;
 
+        this.collisionSprite = PIXI.Sprite.from(PIXI.Texture.WHITE);
+        this.collisionSprite.anchor.set(0.5);
+        this.collisionSprite.width = this.hitbox.width;
+        this.collisionSprite.height = this.hitbox.height;
+        this.updateCollisionSprite();
+
         this.rotator = new Rotation(this.sprite);
 
         this.directions = [];
+        this._previousDirections = [];
         this._targetAngle = 0;
 
         this._speed = speed ? speed : 5;
@@ -111,7 +120,7 @@ export default class {
     update(delta, speed) {
         this.animate(delta);
         this.rotateTowardsAngle();
-        this.directions = [];
+        this.directions = []; // Clear directions
         this._speed = speed ? speed : this._speed;
     }
 
@@ -122,7 +131,7 @@ export default class {
     }
 
     rotateTowardsAngle() {
-        this._targetAngle = this.rotator.getAngleFromDirections(this.directions);
+        this._targetAngle = this.rotator.getAngleFromDirections(this._previousDirections);
 
         let bias = 0.85; // Weighted bias for rotate spring function
 
@@ -130,8 +139,42 @@ export default class {
 
     }
 
+    updateCollisionSprite(){
+        
+        this.collisionSprite.y = this.hitbox.y;
+        this.collisionSprite.x = this.hitbox.x;
+    }
+
+    canMove(direction){
+        this.updateCollisionSprite();
+        switch (direction) {
+            case "up":
+                this.collisionSprite.y -= this.speed;
+                break;
+            case "down":
+                this.collisionSprite.y += this.speed;
+                break;
+            case "left":
+                this.collisionSprite.x -= this.speed;
+                break;
+            case "right":
+                this.collisionSprite.x += this.speed;
+                break;
+            default:
+                break;
+        }
+        let collisionDetected = false;
+        this.walls.forEach(wall => {
+            // console.log(isTouching(this.collisionSprite, wall))
+            if(isTouching(this.collisionSprite, wall)) collisionDetected = true;
+        })
+        return !collisionDetected
+    }
+
     move(direction) {
-        console.log(this.speed)
+        console.log(this.canMove(direction))
+        if(!this.canMove(direction)) return false
+
         switch (direction) {
             case "up":
                 this.y -= this.speed;
@@ -149,5 +192,6 @@ export default class {
                 return;
         }
         this.directions.push(direction);
+        this._previousDirections = this.directions.length > 0 ? [...this.directions] : this._previousDirections; // If there are directions, save them
     }
 }
