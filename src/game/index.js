@@ -40,6 +40,7 @@ export default function (store) {
     let upKey = keyboard("ArrowUp");
     let leftKey = keyboard("ArrowLeft");
     let rightKey = keyboard("ArrowRight");
+    let spacebar = keyboard(" ");
 
     // Camera
     const camera = new Camera(app);
@@ -55,6 +56,12 @@ export default function (store) {
     app.stage.addChild(player.sprite);
     app.stage.addChild(player.hitbox); // Hitbox has to be added to the stage in order for collition detection to work (aparently)
     app.stage.addChild(map.top);
+
+    // Setup callack function for spacebar (Main action button)
+    spacebar.press = () => {
+        console.log("Pressed space bar")
+        store.commit("nextDialog");
+    }
 
     app.ticker.add((delta) => {
 
@@ -80,7 +87,6 @@ export default function (store) {
         if (rightKey.isDown) {
             player.move("right");
         }
-
 
     });
 
