@@ -174,7 +174,7 @@ export default class {
     }
 
     move(direction) {
-        console.log(this.canMove(direction))
+        // console.log(this.canMove(direction))
         if(!this.canMove(direction)) return false
 
         switch (direction) {
