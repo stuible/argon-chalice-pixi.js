@@ -1,5 +1,5 @@
 <template>
-  <div id="dialogue" v-if="currentMessage">
+  <div class="dialog-box" v-if="currentMessage">
     <!-- Name of Charactor Speaking -->
     <div class="name" v-if="currentMessage.name">{{ currentMessage.name }}</div>
     <!-- General Message -->
@@ -49,8 +49,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#dialogue {
+.dialog-box {
   border: 2px solid rgb(119, 119, 119);
+  background-color: rgba(255, 255, 255, 0.671);
   padding: 1em;
   max-width: 25em;
   margin: 0 auto;

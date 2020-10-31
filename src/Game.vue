@@ -1,6 +1,11 @@
 <template>
-  <dialog-box :messages="$store.state.dialog"/>
-  <div ref="gameView" id="game-view"></div>
+  <div id="game-wrapper">
+    <!-- <div id="ui-wrapper"></div> -->
+    <div ref="gameView" id="game-view"></div>
+    <div id="dialog-box-wrapper">
+      <dialog-box :messages="$store.state.dialog" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -10,7 +15,7 @@ import DialogBox from "./components/DialogBox";
 export default {
   name: "Game",
   components: {
-    DialogBox
+    DialogBox,
   },
   mounted() {
     const game = new Game(this.$store);
@@ -27,6 +32,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#dialog-box-wrapper {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+}
+
+#game-wrapper {
+  position: relative;
 }
 
 #game-view {
