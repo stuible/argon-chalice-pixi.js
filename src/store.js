@@ -20,7 +20,7 @@ export default createStore({
                 state.dialog.push(dialog);
             }
         },
-        removeDialog(state){
+        nextDialog(state){
             state.dialog.shift()
         }
     }

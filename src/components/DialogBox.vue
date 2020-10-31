@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     nextMessage() {
-      this.$store.commit("removeDialog");
+      this.$store.commit("nextDialog");
     },
     runAnswerAction(action) {
       action();
