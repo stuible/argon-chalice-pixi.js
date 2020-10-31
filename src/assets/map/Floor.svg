@@ -1,0 +1,33 @@
+<svg width="1440px" height="960px" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960">
+	<defs>
+		<style>
+			.cls-1{fill:#d7ba82;}.cls-2{fill:#eae5e1;}.cls-3{fill:#b0c8d1;}.cls-4{fill:#edd5a9;}.cls-5,.cls-6{fill:none;stroke:#fff;stroke-miterlimit:10;}.cls-5{stroke-width:1.04px;}.cls-7{fill:#c8bdab;}.cls-8{fill:#cfc8b6;}
+		</style>
+	</defs>
+	<rect class="cls-1" x="189.08" y="323.68" width="261" height="216" />
+	<rect class="cls-2" x="459.08" y="368.68" width="117" height="72" />
+	<rect class="cls-2" x="459.08" y="323.68" width="117" height="36" />
+	<rect class="cls-3" x="189.08" y="476.68" width="225" height="63" />
+	<rect class="cls-4" x="198.08" y="530.68" width="99" height="9" />
+	<rect class="cls-4" x="306.08" y="530.68" width="99" height="9" />
+	<rect class="cls-4" x="306.08" y="512.68" width="99" height="9" />
+	<rect class="cls-4" x="306.08" y="494.68" width="99" height="9" />
+	<rect class="cls-4" x="198.08" y="512.68" width="99" height="9" />
+	<rect class="cls-4" x="198.08" y="494.68" width="99" height="9" />
+	<rect class="cls-4" x="198.08" y="476.68" width="99" height="9" />
+	<rect class="cls-4" x="306.08" y="476.68" width="99" height="9" />
+	<rect class="cls-5" x="207.08" y="332.68" width="225" height="126" />
+	<line class="cls-6" x1="207.08" y1="395.68" x2="432.08" y2="395.68" />
+	<line class="cls-5" x1="324.58" y1="332.68" x2="324.58" y2="458.68" />
+	<polygon class="cls-7" points="1053.08 494.68 1053.08 485.68 675.08 485.68 675.08 323.68 585.08 323.68 585.08 485.68 459.08 485.68 459.08 584.68 189.08 584.68 189.08 647.68 576.08 647.68 576.08 593.68 675.08 593.68 675.08 548.68 1053.08 548.68 1062.08 548.68 1062.08 728.68 1134.08 728.68 1134.08 746.68 1350.08 746.68 1350.08 548.68 1350.08 494.68 1053.08 494.68" />
+	<rect class="cls-7" x="135.08" y="584.68" width="45" height="63" />
+	<rect class="cls-8" x="207.08" y="692.68" width="117" height="90" />
+	<rect class="cls-8" x="333.08" y="692.68" width="117" height="90" />
+	<rect class="cls-8" x="459.08" y="692.68" width="117" height="90" />
+	<rect class="cls-8" x="684.08" y="593.68" width="117" height="90" />
+	<rect class="cls-8" x="810.08" y="593.68" width="117" height="90" />
+	<rect class="cls-8" x="936.08" y="593.68" width="117" height="90" />
+	<rect class="cls-8" x="684.08" y="350.68" width="117" height="90" />
+	<rect class="cls-8" x="810.08" y="350.68" width="117" height="90" />
+	<rect class="cls-8" x="936.08" y="350.68" width="117" height="90" />
+</svg>

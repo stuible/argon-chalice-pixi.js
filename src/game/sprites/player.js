@@ -10,8 +10,8 @@ export default class {
         this.sprite.anchor.set(0.5);
         this.sprite.width = 50;
         this.sprite.height = 50;
-        this.sprite.y = 350;
-        this.sprite.x = 200;
+        this.sprite.y = 1000;
+        this.sprite.x = 1000;
 
         this.walls = walls;
 
@@ -36,11 +36,14 @@ export default class {
         this.hitbox.tint = 0xFF0000;
         this.hitbox.visible = false;
 
-        this.collisionSprite = PIXI.Sprite.from(PIXI.Texture.WHITE);
-        this.collisionSprite.anchor.set(0.5);
-        this.collisionSprite.width = this.hitbox.width;
-        this.collisionSprite.height = this.hitbox.height;
-        this.updateCollisionSprite();
+        this.collisionBox = {
+            width: this.hitbox.width,
+            height: this.hitbox.height,
+            x: 0,
+            y: 0
+        }
+
+        this.updateCollisionBox();
 
         this.rotator = new Rotation(this.sprite);
 
@@ -139,26 +142,25 @@ export default class {
 
     }
 
-    updateCollisionSprite(){
-        
-        this.collisionSprite.y = this.hitbox.y;
-        this.collisionSprite.x = this.hitbox.x;
+    updateCollisionBox(){
+        this.collisionBox.y = this.hitbox.y - (this.hitbox.height / 2);
+        this.collisionBox.x = this.hitbox.x - (this.hitbox.width / 2);
     }
 
     canMove(direction){
-        this.updateCollisionSprite();
+        this.updateCollisionBox();
         switch (direction) {
             case "up":
-                this.collisionSprite.y -= this.speed;
+                this.collisionBox.y -= this.speed;
                 break;
             case "down":
-                this.collisionSprite.y += this.speed;
+                this.collisionBox.y += this.speed;
                 break;
             case "left":
-                this.collisionSprite.x -= this.speed;
+                this.collisionBox.x -= this.speed;
                 break;
             case "right":
-                this.collisionSprite.x += this.speed;
+                this.collisionBox.x += this.speed;
                 break;
             default:
                 break;
@@ -166,7 +168,7 @@ export default class {
         let collisionDetected = false;
         this.walls.forEach(wall => {
             // console.log(isTouching(this.collisionSprite, wall))
-            if(isTouching(this.collisionSprite, wall)) collisionDetected = true;
+            if(isTouching(this.collisionBox, wall)) collisionDetected = true;
         })
         return !collisionDetected
     }
