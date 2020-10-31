@@ -48,11 +48,10 @@ export default function (store) {
     const map = new Map();
 
     // Player
-    const player = new Player({ speed: 3, state: store.state, walls: map.walls });
+    const player = new Player({ speed: 3, state: store.state, walls: map.wallColliders.children });
 
     // Add elements to stage
     app.stage.addChild(map.bottom);
-    app.stage.addChild(map.middle);
     app.stage.addChild(player.sprite);
     app.stage.addChild(player.hitbox); // Hitbox has to be added to the stage in order for collition detection to work (aparently)
     app.stage.addChild(map.top);
