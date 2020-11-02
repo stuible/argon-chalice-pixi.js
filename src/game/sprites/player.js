@@ -36,14 +36,17 @@ export default class {
         this.hitbox.tint = 0xFF0000;
         this.hitbox.visible = false;
 
+        // Object used to text movement / collision
         this.collisionBox = {
             width: this.hitbox.width,
             height: this.hitbox.height,
             x: 0,
             y: 0
         }
-
         this.updateCollisionBox();
+
+        //Player Proximity
+        this.nearThreshold = 40;
 
         this.rotator = new Rotation(this.sprite);
 
@@ -61,6 +64,16 @@ export default class {
         let aBox = this.hitbox.getBounds();
         let bBox = sprite.getBounds();
         return isTouching(aBox, bBox);
+    }
+
+    get nearCollisionBox() {
+        const threshold = this.nearThreshold * 2;
+        return {
+            width: this.hitbox.width + threshold,
+            height: this.hitbox.height + threshold,
+            x: this.hitbox.x - ((this.hitbox.width + threshold) / 2),
+            y: this.hitbox.y - ((this.hitbox.height + threshold) / 2)
+        }
     }
 
     get speedBonus() {
@@ -142,12 +155,30 @@ export default class {
 
     }
 
-    updateCollisionBox(){
+    updateCollisionBox() {
         this.collisionBox.y = this.hitbox.y - (this.hitbox.height / 2);
         this.collisionBox.x = this.hitbox.x - (this.hitbox.width / 2);
     }
 
-    canMove(direction){
+    // Returns element that player is touching or false if they arn't touching anything
+    isTouching(array) {
+        let collisionDetected = false;
+        array.forEach(item => {
+            // console.log(isTouching(this.collisionSprite, wall))
+            if (isTouching(this.collisionBox, item)) {
+                collisionDetected = true;
+                return item;
+            }
+        })
+        return collisionDetected
+    }
+
+    // Returns element that player is near or false if they arn't touching anything
+    isNear(sprite) {
+        return isTouching(this.nearCollisionBox, sprite);
+    }
+
+    canMove(direction) {
         this.updateCollisionBox();
         switch (direction) {
             case "up":
@@ -165,17 +196,20 @@ export default class {
             default:
                 break;
         }
+
         let collisionDetected = false;
         this.walls.forEach(wall => {
             // console.log(isTouching(this.collisionSprite, wall))
-            if(isTouching(this.collisionBox, wall)) collisionDetected = true;
+            if (isTouching(this.collisionBox, wall)) {
+                collisionDetected = true;
+            }
         })
         return !collisionDetected
     }
 
     move(direction) {
         // console.log(this.canMove(direction))
-        if(!this.canMove(direction)) return false
+        if (!this.canMove(direction)) return false
 
         switch (direction) {
             case "up":
@@ -195,5 +229,10 @@ export default class {
         }
         this.directions.push(direction);
         this._previousDirections = this.directions.length > 0 ? [...this.directions] : this._previousDirections; // If there are directions, save them
+    }
+
+    // User pressed action button
+    action() {
+
     }
 }
