@@ -10,10 +10,10 @@ export default class {
         this.sprite.anchor.set(0.5);
         this.sprite.width = 50;
         this.sprite.height = 50;
-        this.sprite.y = y;
-        this.sprite.x = x;
+        this.sprite.y = y ?? 0;
+        this.sprite.x = x ?? 0;
 
-        this.walls = walls;
+        this.walls = walls ?? [];
 
         this.animator = new Animation(this.sprite, {
             textures: [
