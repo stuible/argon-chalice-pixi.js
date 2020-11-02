@@ -51,6 +51,14 @@ export default {
       this.nextMessage();
     },
   },
+  watch: {
+    async currentMessage() {
+      if (this.currentMessage && this.currentMessage.action) {
+        await this.currentMessage.action();
+        this.nextMessage();
+      }
+    },
+  },
 };
 </script>
 
@@ -76,5 +84,4 @@ export default {
     animation: typing 3.5s steps(40, end);
   }
 }
-
 </style>
