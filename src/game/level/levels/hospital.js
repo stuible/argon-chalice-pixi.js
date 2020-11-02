@@ -69,31 +69,50 @@ export default class {
     }
 
     addDialog() {
-        this.levelManager.store.commit("addDialogue", {
-            name: 'Player',
-            message: `HI Grandpa! How’re you feeling? I ran into the nurse earlier and she told me to ask you about it. 
-            Mom made you some soup so if you can hold it down, take a sip?`
-        })
-        this.levelManager.store.commit("addDialogue", {
-            name: 'Grandpa',
-            message: `it’s looking grim. I still got some fight left in me. I won’t kick the bucket just yet!`
-        })
-        this.levelManager.store.commit("addDialogue", {
-            name: 'Grandpa',
-            message: `By the way isn’t this your last year in high school?`
-        })
-        this.levelManager.store.commit("addDialogue", {
-            name: 'Player',
-            message: `*Nods*`
-        })
-        this.levelManager.store.commit("addDialogue", {
-            name: 'Grandpa',
-            message: `Grandpa: I wish I finished high school… I was drafted to fight in the army, you know. 
-            Lost a lot of my youth there…. Say, [p], can you fulfill one of my wishes?`
-        })
+        this.levelManager.store.commit("addDialogue", [
+            {
+                name: 'Player',
+                message: `Hi Grandpa! How’re you feeling? I ran into the nurse earlier and she told me to ask you about it. 
+                Mom made you some soup so if you can hold it down, take a sip?`
+            },
+            {
+                name: 'Grandpa',
+                message: `it’s looking grim. I still got some fight left in me. I won’t kick the bucket just yet!`
+            },
+            {
+                name: 'Grandpa',
+                message: `By the way isn’t this your last year in high school?`
+            },
+            {
+                name: 'Player',
+                message: `*Nods*`
+            },
+            {
+                name: 'Grandpa',
+                message: `Grandpa: I wish I finished high school… I was drafted to fight in the army, you know. 
+                Lost a lot of my youth there…. Say, [p], can you fulfill one of my wishes?`
+            },
+            {
+                name: 'Grandpa', question: "Can you enjoy your high school prom with a partner for me? Take a few photographs…. Take someone out… ", answers: [
+                    {
+                        answer: "Yes",
+                        action: () => console.log("You answered Right")
+                    },
+                    {
+                        answer: "Of Course!",
+                        action: () => console.log("You answered Wrong")
+                    }
+                ]
+            },
+            {
+                name: 'Player',
+                message: `Of course Grandpa. It’s not a problem, I actually have a girlfriend, you just haven’t met her yet! 
+                Prom’s in a week so look forward to my stories!`
+            },
+            { name: 'Grampa', action: () => { this.levelManager.load('highschool') } }
+        ])
 
 
-        this.levelManager.store.commit("addDialogue", { name: 'Bob', action: () => { this.levelManager.load('highschool') } })
     }
 
 
