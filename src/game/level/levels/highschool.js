@@ -6,8 +6,13 @@ import { Person } from '../../sprites'
 import store from '../../../store';
 
 export default class {
-    constructor(store) {
+    constructor(levelManager) {
         this.mapScale = 3;
+
+        this.player = {
+            x: 1000,
+            y: 1850,
+        }
 
         const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floor.svg"), { scale: this.mapScale });
         const floorTexture = PIXI.Texture.from(floorResource);

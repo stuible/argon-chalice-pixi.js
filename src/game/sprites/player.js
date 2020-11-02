@@ -5,13 +5,13 @@ import map from '../helpers/map'
 import { Rotation, Animation } from './utils';
 
 export default class {
-    constructor({ speed, state, walls }) {
+    constructor({ speed, state, walls, x, y }) {
         this.sprite = PIXI.Sprite.from(require("@/assets/ant/ant-2.png"));
         this.sprite.anchor.set(0.5);
         this.sprite.width = 50;
         this.sprite.height = 50;
-        this.sprite.y = 1000;
-        this.sprite.x = 1000;
+        this.sprite.y = y;
+        this.sprite.x = x;
 
         this.walls = walls;
 

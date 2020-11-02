@@ -3,7 +3,7 @@ import keyboard from './controls/keyboard'
 
 import Level from './level'
 
-import { Player } from './sprites';
+
 
 import Camera from './camera';
 
@@ -48,32 +48,34 @@ export default function (store) {
     const camera = new Camera(app);
 
     // Map
-    const level = new Level();
+    const level = new Level("hospital", store);
 
     // Player
-    const player = new Player({
-        speed: 3, state: store.state,
-        walls: level.level.wallColliders.children,
-        characters: level.level.characters
-    });
+    const player = level.player;
+    // const player = new Player({
+    //     x: 500, y: 300,
+    //     speed: 3, state: store.state,
+    //     walls: level.level.wallColliders ? level.level.wallColliders.children : [],
+    //     characters: level.level.characters
+    // });
 
     // Add elements to stage
-    app.stage.addChild(level.level.bottom);
+    app.stage.addChild(level.bottom);
     app.stage.addChild(player.sprite);
     app.stage.addChild(player.hitbox); // Hitbox has to be added to the stage in order for collition detection to work (aparently)
-    app.stage.addChild(level.level.top);
+    app.stage.addChild(level.top);
 
     // Setup callack function for spacebar (Main action button)
     spacebar.press = () => {
         console.log("Pressed space bar")
-        
-        if(store.state.dialog.length > 0){
+
+        if (store.state.dialog.length > 0) {
             store.commit("nextDialog");
             return;
         }
 
         level.level.characters.forEach(character => {
-            if(player.isNear(character.sprite)){
+            if (player.isNear(character.sprite)) {
                 character.interact();
             }
         })
