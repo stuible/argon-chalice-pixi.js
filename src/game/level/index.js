@@ -22,7 +22,7 @@ export default class {
         // Recieve store mutation events
         const unsubscribe = this.store.subscribe((mutation, state) => {
             // If game is being started, load the level
-            if(mutation.type == "startGame"){
+            if (mutation.type == "startGame") {
                 this.load(levelName)
             }
         })
@@ -68,6 +68,11 @@ export default class {
         this.player.y = this.level?.player?.y ? this.level?.player?.y : this.player.y;
     }
 
+    removeItem(index) {
+        const item = this.level.items[index].sprite;
+        this.level.itemsContainer.removeChild(item);
+        this.level.items.splice(index, 1);
+    }
 
 
 }

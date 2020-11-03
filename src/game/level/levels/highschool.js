@@ -51,7 +51,11 @@ export default class {
     }
 
     addItems() {
-        const item = new Thing({ x: 25, y: 42, gridSize: this.gridSize })
+        const item = new Thing({
+            x: 25, y: 42, gridSize: this.gridSize, interact: () => {
+               console.log("you are near the thing")
+            }
+        })
         this.items.push(item);
         this.itemsContainer.addChild(item.sprite);
     }

@@ -3,8 +3,6 @@ import keyboard from './controls/keyboard'
 
 import Level from './level'
 
-
-
 import Camera from './camera';
 
 export default function (store) {
@@ -43,6 +41,7 @@ export default function (store) {
     // Setup callack function for spacebar (Main action button)
     spacebar.press = () => {
         console.log("Pressed space bar")
+        if (!store.state.gameStarted) return
 
         if (store.state.dialog.length > 0) {
             store.commit("nextDialog");
@@ -80,6 +79,16 @@ export default function (store) {
         if (rightKey.isDown) {
             player.move("right");
         }
+
+        // Check if player is near any items
+        level.level.items.forEach((item, index) => {
+            if (player.isNear(item.sprite)) {
+                // Run items interaction
+                item.interact();
+                // Remove item
+                level.removeItem(index)
+            }
+        })
 
     });
 
