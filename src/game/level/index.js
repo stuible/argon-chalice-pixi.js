@@ -12,15 +12,21 @@ export default class {
         this.bottom = new PIXI.Container();
 
         this.player = new Player({
-            speed: 3, 
+            speed: 3,
             state: store.state,
             walls: this.level?.wallColliders ? level.level.wallColliders.children : []
         });
 
-        this.load(levelName)
+        if (this.store.state.gameStarted) this.load(levelName)
+
+        const unsubscribe = this.store.subscribe((mutation, state) => {
+            if(mutation.type == "startGame"){
+                this.load(levelName)
+            }
+        })
     }
 
-    update(delta){
+    update(delta) {
         this.player.update(delta);
     }
 
@@ -52,7 +58,7 @@ export default class {
         }
     }
 
-    updatePlayer(){
+    updatePlayer() {
         // Update player Walls
         this.player.walls = this.level?.wallColliders?.children ? this.level.wallColliders.children : []
         // Update Player position
