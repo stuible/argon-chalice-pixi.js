@@ -17,9 +17,12 @@ export default class {
             walls: this.level?.wallColliders ? level.level.wallColliders.children : []
         });
 
+        // If game has alread been started, load the level
         if (this.store.state.gameStarted) this.load(levelName)
 
+        // Recieve store mutation events
         const unsubscribe = this.store.subscribe((mutation, state) => {
+            // If game is being started, load the level
             if(mutation.type == "startGame"){
                 this.load(levelName)
             }
