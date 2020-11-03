@@ -2,7 +2,6 @@ import { Highschool, Hospital } from './levels';
 import { Player } from '../sprites';
 
 import * as PIXI from 'pixi.js'
-import hospital from './levels/hospital';
 
 export default class {
     constructor(levelName, store) {
