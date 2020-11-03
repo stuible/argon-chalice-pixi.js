@@ -1,0 +1,50 @@
+<svg width="1440px" height="960px" id="Floors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960">
+	<defs>
+		<style>
+			.cls-1{fill:#d7ba82;}.cls-2{fill:#b0c8d1;}.cls-3{fill:#eae5e1;}.cls-4{fill:#edd5a9;}.cls-5,.cls-6{fill:none;stroke:#fff;stroke-miterlimit:10;}.cls-5{stroke-width:1.04px;}.cls-7{fill:#c8bdab;}
+		</style>
+	</defs>
+	<rect class="cls-1" x="189" y="324" width="261" height="216" />
+	<rect class="cls-2" x="189" y="477" width="225" height="63" />
+	<rect class="cls-3" x="459" y="369" width="117" height="72" />
+	<rect class="cls-3" x="459" y="324" width="117" height="36" />
+	<rect class="cls-4" x="198" y="531" width="99" height="9" />
+	<rect class="cls-4" x="306" y="531" width="99" height="9" />
+	<rect class="cls-4" x="306" y="513" width="99" height="9" />
+	<rect class="cls-4" x="306" y="495" width="99" height="9" />
+	<rect class="cls-4" x="198" y="513" width="99" height="9" />
+	<rect class="cls-4" x="198" y="495" width="99" height="9" />
+	<rect class="cls-4" x="198" y="477" width="99" height="9" />
+	<rect class="cls-4" x="306" y="477" width="99" height="9" />
+	<rect class="cls-5" x="207" y="333" width="225" height="126" />
+	<line class="cls-6" x1="207" y1="396" x2="432" y2="396" />
+	<line class="cls-5" x1="324.5" y1="333" x2="324.5" y2="459" />
+	<polygon class="cls-7" points="1053 495 1053 486 675 486 675 324 585 324 585 486 459 486 459 585 189 585 189 648 576 648 576 594 675 594 675 549 1053 549 1062 549 1062 729 1134 729 1134 747 1350 747 1350 549 1350 495 1053 495" />
+	<rect class="cls-3" x="207" y="693" width="117" height="90" />
+	<rect class="cls-3" x="333" y="693" width="117.5" height="90" />
+	<rect class="cls-3" x="458.5" y="693" width="117.5" height="89.5" />
+	<rect class="cls-3" x="684" y="594.5" width="117.5" height="89.5" />
+	<rect class="cls-3" x="810.5" y="594.5" width="117" height="89" />
+	<rect class="cls-3" x="935.5" y="594.5" width="117" height="89" />
+	<rect class="cls-3" x="684" y="351" width="117" height="90" />
+	<rect class="cls-3" x="810" y="351" width="117" height="90" />
+	<rect class="cls-3" x="936" y="351" width="117" height="90" />
+	<rect class="cls-7" x="135" y="585" width="45" height="63" />
+	<rect class="cls-3" x="549" y="441" width="18" height="45" />
+	<rect class="cls-3" x="774" y="441" width="18" height="45" />
+	<rect class="cls-3" x="900" y="441" width="18" height="45" />
+	<rect class="cls-3" x="1026" y="441" width="18" height="45" />
+	<rect class="cls-7" x="1026" y="549" width="18" height="45" />
+	<rect class="cls-7" x="900" y="549" width="18" height="45" />
+	<rect class="cls-7" x="774" y="549" width="18" height="45" />
+	<rect class="cls-7" x="612" y="594" width="36" height="45" />
+	<rect class="cls-7" x="549" y="648" width="18" height="45" />
+	<rect class="cls-7" x="423" y="648" width="18" height="45" />
+	<rect class="cls-7" x="297" y="648" width="18" height="45" />
+	<rect class="cls-7" x="180" y="621" width="9" height="18" />
+	<rect class="cls-7" x="414" y="540" width="36" height="45" />
+	<rect class="cls-3" x="450" y="405" width="9" height="18" />
+	<rect class="cls-3" x="450" y="342" width="9" height="18" />
+	<rect class="cls-3" x="576" y="333" width="9" height="18" />
+	<rect class="cls-7" x="1080" y="729" width="36" height="45" />
+</svg>

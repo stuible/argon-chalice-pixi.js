@@ -48,7 +48,8 @@ export default function (store) {
     const camera = new Camera(app);
 
     // Map
-    const level = new Level("hospital", store);
+    //const level = new Level("hospital", store);
+    const level = new Level("highschool", store);
 
     // Player
     const player = level.player;

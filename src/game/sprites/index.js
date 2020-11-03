@@ -1,7 +1,9 @@
 import Player from './player';
-import Person from './person';
+import Person from './characters/person';
+import Hazelnut from './characters/hazelnut';
 
 export {
     Player,
-    Person
+    Person,
+    Hazelnut
 }

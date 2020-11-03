@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
 import { Thing } from '../../items'
-import { Person } from '../../sprites'
+import { Person, Hazelnut } from '../../sprites'
 import store from '../../../store';
 
 export default class {
@@ -14,7 +14,7 @@ export default class {
             y: 1850,
         }
 
-        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floor.svg"), { scale: this.mapScale });
+        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg"), { scale: this.mapScale });
         const floorTexture = PIXI.Texture.from(floorResource);
         this.floor = PIXI.Sprite.from(floorTexture);
 
@@ -65,6 +65,16 @@ export default class {
 
         this.characters.push(person);
         this.charactersContainer.addChild(person.sprite);
+
+
+        const hazelnut = new Hazelnut({ x: 31, y: 50, gridSize: this.gridSize })
+
+        hazelnut.interact = () => {
+            store.commit("addDialogue", { name: 'Hazelnut', message: "Hi!  Would you like to be my boyfriend?" })
+        }
+
+        this.characters.push(hazelnut);
+        this.charactersContainer.addChild(hazelnut.sprite);
     }
 
 
