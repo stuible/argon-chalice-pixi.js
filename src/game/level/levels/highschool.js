@@ -67,11 +67,11 @@ export default class {
         this.charactersContainer.addChild(person.sprite);
 
 
-        const hazelnut = new Hazelnut({ x: 31, y: 50, gridSize: this.gridSize })
-
-        hazelnut.interact = () => {
-            store.commit("addDialogue", { name: 'Hazelnut', message: "Hi!  Would you like to be my boyfriend?" })
-        }
+        const hazelnut = new Hazelnut({
+            x: 31, y: 50, gridSize: this.gridSize, interact: () => {
+                store.commit("addDialogue", { name: 'Hazelnut', message: "Hi!  Would you like to be my boyfriend?" })
+            }
+        })
 
         this.characters.push(hazelnut);
         this.charactersContainer.addChild(hazelnut.sprite);
