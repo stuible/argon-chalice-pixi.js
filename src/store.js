@@ -5,10 +5,11 @@ export default createStore({
     state() {
         return {
             gameOver: false,
-            gameStarted: true,
-            paused: false,
+            gameStarted: false,
+            gamePaused: false,
             score: 0,
-            dialog: []
+            dialog: [],
+            items: []
         }
     },
     mutations: {
@@ -22,6 +23,15 @@ export default createStore({
         },
         nextDialog(state){
             state.dialog.shift()
+        },
+        startGame(state){
+            state.gameStarted = true;
+        },
+        pauseGame(state){
+            state.gamePaused = true;
+        },
+        resumeGame(state){
+            state.gamePaused = false;
         }
     }
 })

@@ -20,6 +20,10 @@ export default class {
         this.load(levelName)
     }
 
+    update(delta){
+        this.player.update(delta);
+    }
+
     // Loads new level
     load(levelName) {
         if (levelName == 'hospital') {

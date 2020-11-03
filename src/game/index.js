@@ -16,26 +16,6 @@ export default function (store) {
         // view: document.querySelector('#game')
     });
 
-    // store.commit("addDialogue", {
-    //     name: 'Josh', question: "This is a question", answers: [
-    //         {
-    //             answer: "Right",
-    //             action: () => console.log("You answered Right")
-    //         },
-    //         {
-    //             answer: "Wrong",
-    //             action: () => console.log("You answered Wrong")
-    //         }
-    //     ]
-    // })
-    // store.commit("addDialogue", { name: 'Josh', message: "heheheheheeh" })
-    // store.commit("addDialogue", [
-    //     { name: 'Josh', message: "It's me again heheheheheeh" },
-    //     { name: 'Josh', message: "Still me heheheheheeh!!!!!!!!!!" },
-    //     { name: 'Josh', message: "Okay last time" },
-    //     { name: 'John', message: "I'm actually Josh in disguise" },
-    // ])
-
 
     //Key Inputs
     let downKey = keyboard("ArrowDown");
@@ -48,17 +28,11 @@ export default function (store) {
     const camera = new Camera(app);
 
     // Map
-    //const level = new Level("hospital", store);
-    const level = new Level("highschool", store);
+    const level = new Level("hospital", store);
+    // const level = new Level("highschool", store);
 
     // Player
     const player = level.player;
-    // const player = new Player({
-    //     x: 500, y: 300,
-    //     speed: 3, state: store.state,
-    //     walls: level.level.wallColliders ? level.level.wallColliders.children : [],
-    //     characters: level.level.characters
-    // });
 
     // Add elements to stage
     app.stage.addChild(level.bottom);
@@ -86,13 +60,13 @@ export default function (store) {
 
     app.ticker.add((delta) => {
 
-        if (store.state.paused || !store.state.gameStarted) return;
+        if (store.state.gamePaused || !store.state.gameStarted) return;
 
         // Follow player with "camera"
         camera.moveToward(player);
 
-        // Let player know this is a new frame
-        player.update(delta, store.state.playerSpeed);
+        // Let level know this is a new frame
+        level.update(delta);
 
         if (downKey.isDown) {
             player.move("down");

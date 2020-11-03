@@ -1,6 +1,8 @@
 <template>
   <div id="game-wrapper">
-    <!-- <div id="ui-wrapper"></div> -->
+    <div id="ui-wrapper">
+      <main-menu v-if="!$store.state.gameStarted"/>
+    </div>
     <div ref="gameView" id="game-view"></div>
     <div id="dialog-box-wrapper">
       <dialog-box :messages="$store.state.dialog" />
@@ -11,11 +13,13 @@
 <script>
 import Game from "./game/index";
 import DialogBox from "./components/DialogBox";
+import MainMenu from "./components/MainMenu";
 
 export default {
   name: "Game",
   components: {
     DialogBox,
+    MainMenu
   },
   mounted() {
     const game = new Game(this.$store);
@@ -38,6 +42,12 @@ export default {
   position: absolute;
   bottom: 1em;
   width: 100%;
+}
+
+#ui-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 #game-wrapper {

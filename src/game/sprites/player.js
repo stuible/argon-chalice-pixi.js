@@ -133,11 +133,10 @@ export default class {
         this.hitbox.width = w;
     }
 
-    update(delta, speed) {
+    update(delta) {
         this.animate(delta);
         this.rotateTowardsAngle();
         this.directions = []; // Clear directions
-        this._speed = speed ? speed : this._speed;
     }
 
     animate(delta) {
