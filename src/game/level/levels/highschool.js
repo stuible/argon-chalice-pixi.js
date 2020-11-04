@@ -124,8 +124,11 @@ export default class {
                 else if (!this.goals.originalGirlfriend.collectedItems) {
                     store.commit("addDialogue", { name: 'Hazelnut', message: "Thank you for offering to find a PEN for me :)" },);
                 }
-                else if (this.goals.originalGirlfriend.collectedItems){
-                    store.commit("addDialogue", { name: 'Hazelnut', message: "OMG Thank you so much for the pen!" },);
+                else if (this.goals.originalGirlfriend.collectedItems) {
+                    store.commit("addDialogue", [
+                        { name: 'Hazelnut', message: "OMG Thank you so much for the pen!" },
+                        { action: () => store.commit("removeItem", "pen") }
+                    ]);
                 }
 
             }

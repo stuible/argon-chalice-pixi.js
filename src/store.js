@@ -35,6 +35,9 @@ export default createStore({
         },
         collectedItem(state, item){
             state.items.push(item)
+        },
+        removeItem(state, itemName){
+            state.items = state.items.filter(x => x.name !== itemName);
         }
     }
 })
