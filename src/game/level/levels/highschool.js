@@ -14,6 +14,23 @@ export default class {
             y: 1850,
         }
 
+        this.goals = {
+            originalGirlfriend: {
+                spoken: false,
+                collectedItems: false
+            }
+        }
+
+        this.store = levelManager.store;
+
+        // Recieve store mutation events
+        const unsubscribe = this.store.subscribe((mutation, state) => {
+            // If item was collected
+            if (mutation.type == "collectedItem") {
+                if (this.store.state.items.some(item => item.name = "pen")) this.goals.originalGirlfriend.collectedItems = true;
+            }
+        })
+
         const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg"), { scale: this.mapScale });
         const floorTexture = PIXI.Texture.from(floorResource);
         this.floor = PIXI.Sprite.from(floorTexture);
@@ -80,28 +97,37 @@ export default class {
 
 
         const hazelnut = new Hazelnut({
-            x: 31, y: 50, gridSize: this.gridSize, interact: () => {
-                console.log("talking to hazel")
-                store.commit("addDialogue", [
-                    { name: 'Hazelnut', message: "Good morning[p]~~~Hope your Saturday was fun.Without me." },
-                    { name: 'Hazelnut', message: "… I’m not mad really, I just wished we spent more time together, y’know ? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
-                    { name: 'Player', message: "I’m sorry, [Girlfriend] but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
-                    { name: 'Hazelnut', message: "Well… act~ually~~~Can you get me a few things ? It’s small things, I promise!" },
-                    {
-                        name: 'Hazelnut', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [
-                            {
-                                answer: "Of course!",
-                                action: () => console.log("You answered Right")
-                            },
-                            {
-                                answer: "What kind of things? ",
-                                action: () => console.log("You answered Wrong")
-                            }
-                        ]
-                    },
-                    { name: 'Hazelnut', message: "Yay! It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you! " },
+            x: 31, y: 68, gridSize: this.gridSize, interact: () => {
 
-                ])
+                if (!this.goals.originalGirlfriend.spoken && !this.goals.originalGirlfriend.collectedItems) {
+                    store.commit("addDialogue", [
+                        { name: 'Hazelnut', message: "Good morning[p]~~~Hope your Saturday was fun.Without me." },
+                        { name: 'Hazelnut', message: "… I’m not mad really, I just wished we spent more time together, y’know ? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
+                        { name: 'Player', message: "I’m sorry, [Girlfriend] but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
+                        { name: 'Hazelnut', message: "Well… act~ually~~~Can you get me a few things ? It’s small things, I promise!" },
+                        {
+                            name: 'Hazelnut', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [
+                                {
+                                    answer: "Of course!",
+                                    action: () => console.log("You answered Right")
+                                },
+                                {
+                                    answer: "What kind of things? ",
+                                    action: () => console.log("You answered Wrong")
+                                }
+                            ]
+                        },
+                        { name: 'Hazelnut', message: "Yay! It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you!" },
+                        { action: () => this.goals.originalGirlfriend.spoken = true }
+                    ])
+                }
+                else if (!this.goals.originalGirlfriend.collectedItems) {
+                    store.commit("addDialogue", { name: 'Hazelnut', message: "Thank you for offering to find a PEN for me :)" },);
+                }
+                else if (this.goals.originalGirlfriend.collectedItems){
+                    store.commit("addDialogue", { name: 'Hazelnut', message: "OMG Thank you so much for the pen!" },);
+                }
+
             }
         })
 
