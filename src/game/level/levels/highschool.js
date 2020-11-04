@@ -81,7 +81,27 @@ export default class {
 
         const hazelnut = new Hazelnut({
             x: 31, y: 50, gridSize: this.gridSize, interact: () => {
-                store.commit("addDialogue", { name: 'Hazelnut', message: "Hi!  Would you like to be my boyfriend?" })
+                console.log("talking to hazel")
+                store.commit("addDialogue", [
+                    { name: 'Hazelnut', message: "Good morning[p]~~~Hope your Saturday was fun.Without me." },
+                    { name: 'Hazelnut', message: "… I’m not mad really, I just wished we spent more time together, y’know ? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
+                    { name: 'Player', message: "I’m sorry, [Girlfriend] but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
+                    { name: 'Hazelnut', message: "Well… act~ually~~~Can you get me a few things ? It’s small things, I promise!" },
+                    {
+                        name: 'Hazelnut', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [
+                            {
+                                answer: "Of course!",
+                                action: () => console.log("You answered Right")
+                            },
+                            {
+                                answer: "What kind of things? ",
+                                action: () => console.log("You answered Wrong")
+                            }
+                        ]
+                    },
+                    { name: 'Hazelnut', message: "Yay! It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you! " },
+
+                ])
             }
         })
 
@@ -91,3 +111,4 @@ export default class {
 
 
 }
+

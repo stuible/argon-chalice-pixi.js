@@ -6,23 +6,23 @@ import { Rotation, Animation } from './utils';
 
 export default class {
     constructor({ speed, state, walls, x, y }) {
-        this.sprite = PIXI.Sprite.from(require("@/assets/ant/ant-2.png"));
+        this.sprite = PIXI.Sprite.from(require("@/assets/characters/player.svg"));
         this.sprite.anchor.set(0.5);
-        this.sprite.width = 50;
-        this.sprite.height = 50;
+        this.sprite.width = 30;
+        this.sprite.height = 75;
         this.sprite.y = y ?? 0;
         this.sprite.x = x ?? 0;
 
         this.walls = walls ?? [];
 
-        this.animator = new Animation(this.sprite, {
-            textures: [
-                require('@/assets/ant/ant-1.png'),
-                require('@/assets/ant/ant-2.png'),
-                require('@/assets/ant/ant-3.png'),
-                require('@/assets/ant/ant-4.png')
-            ]
-        });
+        // this.animator = new Animation(this.sprite, {
+        //     textures: [
+        //         require('@/assets/ant/ant-1.png'),
+        //         require('@/assets/ant/ant-2.png'),
+        //         require('@/assets/ant/ant-3.png'),
+        //         require('@/assets/ant/ant-4.png')
+        //     ]
+        // });
 
         this.state = state;
 
@@ -134,8 +134,8 @@ export default class {
     }
 
     update(delta) {
-        this.animate(delta);
-        this.rotateTowardsAngle();
+        // this.animate(delta);
+        // this.rotateTowardsAngle();
         this.directions = []; // Clear directions
     }
 
@@ -160,16 +160,8 @@ export default class {
     }
 
     // Returns element that player is touching or false if they arn't touching anything
-    isTouching(array) {
-        let collisionDetected = false;
-        array.forEach(item => {
-            // console.log(isTouching(this.collisionSprite, wall))
-            if (isTouching(this.collisionBox, item)) {
-                collisionDetected = true;
-                return item;
-            }
-        })
-        return collisionDetected
+    isTouching(sprite) {
+        return isTouching(this.collisionBox, sprite)
     }
 
     // Returns element that player is near or false if they arn't touching anything

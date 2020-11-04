@@ -34,7 +34,7 @@ export default class {
 
         // Check if player is near any items
         this.level.items.forEach((item, index) => {
-            if (this.player.isNear(item.sprite)) {
+            if (this.player.isTouching(item.sprite)) {
 
                 // If item is a collectable, collect and remove it
                 if (item.type == "collectable") {
@@ -52,7 +52,7 @@ export default class {
     // User initiated action (pressed action button)
     action() {
         this.level.characters.forEach(character => {
-            if (this.player.isTouching(character.sprite)) {
+            if (this.player.isNear(character.sprite)) {
                 character.interact();
             }
         })
