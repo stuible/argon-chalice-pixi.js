@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
 import { Thing, Collectable } from '../../items'
-import { Person, Hazelnut } from '../../sprites'
+import { Person, Hazelnut, Pine, Coco } from '../../sprites'
 import store from '../../../store';
 
 export default class {
@@ -17,7 +17,8 @@ export default class {
         this.goals = {
             originalGirlfriend: {
                 spoken: false,
-                collectedItems: false
+                collectedItems: false,
+                complete: false
             }
         }
 
@@ -127,7 +128,12 @@ export default class {
                 else if (this.goals.originalGirlfriend.collectedItems) {
                     store.commit("addDialogue", [
                         { name: 'Hazelnut', message: "OMG Thank you so much for the pen!" },
-                        { action: () => store.commit("removeItem", "pen") }
+                        {
+                            action: () => {
+                                store.commit("removeItem", "pen")
+                                this.goals.originalGirlfriend.complete = true;
+                            }
+                        }
                     ]);
                 }
 
@@ -136,6 +142,31 @@ export default class {
 
         this.characters.push(hazelnut);
         this.charactersContainer.addChild(hazelnut.sprite);
+
+        const pine = new Pine({
+            x: 50, y: 68, gridSize: this.gridSize, interact: () => {
+                if (!this.goals.originalGirlfriend.complete) {
+                    store.commit("addDialogue", [
+                        { name: 'Pine', message: "Hey ${player}, you still dating Hazel?" }
+                    ]);
+                }
+
+            }
+        })
+        this.characters.push(pine);
+        this.charactersContainer.addChild(pine.sprite);
+
+        const coco = new Coco({
+            x: 55, y: 58, gridSize: this.gridSize, interact: () => {
+                if (!this.goals.originalGirlfriend.complete) {
+                    store.commit("addDialogue", [
+                        { name: 'Pine', message: "Hi ${player}! Are you really still dating Hazel???????" }
+                    ]);
+                }
+            }
+        })
+        this.characters.push(coco);
+        this.charactersContainer.addChild(coco.sprite);
     }
 
 

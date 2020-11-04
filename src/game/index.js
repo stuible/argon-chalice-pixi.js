@@ -49,7 +49,6 @@ export default function (store) {
         }
 
         level.action();
-
     }
 
     app.ticker.add((delta) => {
