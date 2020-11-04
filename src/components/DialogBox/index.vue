@@ -4,11 +4,11 @@
     <div class="name" v-if="currentMessage.name">{{ currentMessage.name }}</div>
     <!-- General Message -->
     <div class="message" v-if="isMessage">
-      <typer :text="currentMessage.message"></typer>
+      <typer :text="currentMessageText"></typer>
     </div>
     <!-- User Answerable Question -->
     <div class="question" v-else-if="isQuestion">
-      <typer :text="currentMessage.question"></typer>
+      <typer :text="currentQuestionText"></typer>
     </div>
     <div class="answers" v-if="isQuestion">
       <button
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import fillTemplate from "es6-dynamic-template";
+
 import Typer from "./Typer";
 export default {
   components: {
@@ -40,6 +42,16 @@ export default {
     },
     isQuestion() {
       return "question" in this.currentMessage;
+    },
+    currentMessageText() {
+      return fillTemplate(this.currentMessage.message, {
+        player: this.$store.state.playerName,
+      });
+    },
+    currentQuestionText() {
+      return fillTemplate(this.currentMessage.question, {
+        player: this.$store.state.playerName,
+      });
     },
   },
   methods: {
