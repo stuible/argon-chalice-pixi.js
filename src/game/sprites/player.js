@@ -36,10 +36,14 @@ export default class {
         this.hitbox.tint = 0xFF0000;
         this.hitbox.visible = false;
 
-        // Object used to text movement / collision
+        // Object used to test movement / collision
         this.collisionBox = {
             width: this.hitbox.width,
-            height: this.hitbox.height,
+            height: this.hitbox.height / 2,
+            offset: {
+                x: 0,
+                y: this.hitbox.height / 2 + 10
+            },
             x: 0,
             y: 0
         }
@@ -155,8 +159,8 @@ export default class {
     }
 
     updateCollisionBox() {
-        this.collisionBox.y = this.hitbox.y - (this.hitbox.height / 2);
-        this.collisionBox.x = this.hitbox.x - (this.hitbox.width / 2);
+        this.collisionBox.y = this.hitbox.y - (this.hitbox.height / 2) + this.collisionBox.offset.y;
+        this.collisionBox.x = this.hitbox.x - (this.hitbox.width / 2) + this.collisionBox.offset.x;
     }
 
     // Returns element that player is touching or false if they arn't touching anything
