@@ -103,7 +103,7 @@ export default class {
                     store.commit("addDialogue", [
                         { name: 'Hazelnut', message: "Good morning ${player}. Hope your Saturday was fun.  Without me." },
                         { name: 'Hazelnut', message: "… I’m not mad really, I just wished we spent more time together, y’know? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
-                        { name: 'Player', message: "I’m sorry, Hazel but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
+                        { name: '${player}', message: "I’m sorry, Hazel but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
                         { name: 'Hazelnut', message: "Well... actuall... Can you get me a few things ? It’s small things, I promise!" },
                         {
                             name: 'Hazelnut', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [

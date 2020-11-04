@@ -71,7 +71,7 @@ export default class {
     addDialog() {
         this.levelManager.store.commit("addDialogue", [
             {
-                name: 'Player',
+                name: '${player}',
                 message: `Hi Grandpa! How’re you feeling? I ran into the nurse earlier and she told me to ask you about it. 
                 Mom made you some soup so if you can hold it down, take a sip?`
             },
@@ -84,13 +84,13 @@ export default class {
                 message: `By the way isn’t this your last year in high school?`
             },
             {
-                name: 'Player',
+                name: '${player}',
                 message: `*Nods*`
             },
             {
                 name: 'Grandpa',
                 message: `Grandpa: I wish I finished high school… I was drafted to fight in the army, you know. 
-                Lost a lot of my youth there…. Say, [p], can you fulfill one of my wishes?`
+                Lost a lot of my youth there…. Say, \${player}, can you fulfill one of my wishes?`
             },
             {
                 name: 'Grandpa', question: "Can you enjoy your high school prom with a partner for me? Take a few photographs…. Take someone out… ", answers: [
@@ -105,7 +105,7 @@ export default class {
                 ]
             },
             {
-                name: 'Player',
+                name: '${player}',
                 message: `Of course Grandpa. It’s not a problem, I actually have a girlfriend, you just haven’t met her yet! 
                 Prom’s in a week so look forward to my stories!`
             },

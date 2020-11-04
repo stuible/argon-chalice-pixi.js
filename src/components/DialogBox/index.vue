@@ -1,7 +1,7 @@
 <template>
   <div class="dialog-box" v-if="currentMessage">
     <!-- Name of Charactor Speaking -->
-    <div class="name" v-if="currentMessage.name">{{ currentMessage.name }}</div>
+    <div class="name" v-if="currentMessage.name">{{ currentMessageName }}</div>
     <!-- General Message -->
     <div class="message" v-if="isMessage">
       <typer :text="currentMessageText"></typer>
@@ -42,6 +42,11 @@ export default {
     },
     isQuestion() {
       return "question" in this.currentMessage;
+    },
+    currentMessageName() {
+      return fillTemplate(this.currentMessage.name, {
+        player: this.$store.state.playerName,
+      });
     },
     currentMessageText() {
       return fillTemplate(this.currentMessage.message, {
