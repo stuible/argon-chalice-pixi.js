@@ -34,9 +34,9 @@ export default function (store) {
 
     // Add elements to stage
     app.stage.addChild(level.bottom);
-    app.stage.addChild(player.sprite);
     app.stage.addChild(player.hitbox); // Hitbox has to be added to the stage in order for collition detection to work (aparently)
     app.stage.addChild(level.top);
+    app.stage.addChild(player.sprite);
 
     // Setup callack function for spacebar (Main action button)
     spacebar.press = () => {
