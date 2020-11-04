@@ -52,7 +52,7 @@ export default class {
     // User initiated action (pressed action button)
     action() {
         this.level.characters.forEach(character => {
-            if (this.player.isNear(character.sprite)) {
+            if (this.player.isTouching(character.sprite)) {
                 character.interact();
             }
         })
