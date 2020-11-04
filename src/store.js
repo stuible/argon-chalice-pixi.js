@@ -32,6 +32,9 @@ export default createStore({
         },
         resumeGame(state){
             state.gamePaused = false;
+        },
+        collectedItem(state, item){
+            state.items.push(item)
         }
     }
 })

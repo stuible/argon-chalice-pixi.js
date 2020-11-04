@@ -28,8 +28,34 @@ export default class {
         })
     }
 
+    // Main update loop function
     update(delta) {
         this.player.update(delta);
+
+        // Check if player is near any items
+        this.level.items.forEach((item, index) => {
+            if (this.player.isNear(item.sprite)) {
+
+                // If item is a collectable, collect and remove it
+                if (item.type == "collectable") {
+                    //let store know we collected an item
+                    item.collected(this.store);
+                    // Remove item
+                    this.removeItem(index)
+                }
+
+
+            }
+        })
+    }
+
+    // User initiated action (pressed action button)
+    action() {
+        this.level.characters.forEach(character => {
+            if (this.player.isNear(character.sprite)) {
+                character.interact();
+            }
+        })
     }
 
     // Loads new level

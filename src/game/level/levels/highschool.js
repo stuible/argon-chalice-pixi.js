@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
-import { Thing } from '../../items'
+import { Thing, Collectable } from '../../items'
 import { Person, Hazelnut } from '../../sprites'
 import store from '../../../store';
 
@@ -50,14 +50,22 @@ export default class {
 
     }
 
+
+
     addItems() {
         const item = new Thing({
             x: 25, y: 42, gridSize: this.gridSize, interact: () => {
-               console.log("you are near the thing")
+                console.log("you are near the thing")
             }
         })
         this.items.push(item);
         this.itemsContainer.addChild(item.sprite);
+
+        const pen = new Collectable({
+            x: 25, y: 80, gridSize: this.gridSize, name: "pen", image: require("@/assets/items/pen.svg")
+        })
+        this.items.push(pen);
+        this.itemsContainer.addChild(pen.sprite);
     }
 
     addCharacters() {

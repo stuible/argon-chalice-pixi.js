@@ -1,7 +1,8 @@
 <template>
   <div id="game-wrapper">
     <div id="ui-wrapper">
-      <main-menu v-if="!$store.state.gameStarted"/>
+      <main-menu v-if="!$store.state.gameStarted" />
+      <hud v-else />
     </div>
     <div ref="gameView" id="game-view"></div>
     <div id="dialog-box-wrapper">
@@ -14,12 +15,14 @@
 import Game from "./game/index";
 import DialogBox from "./components/DialogBox";
 import MainMenu from "./components/MainMenu";
+import Hud from "./components/Hud";
 
 export default {
   name: "Game",
   components: {
     DialogBox,
-    MainMenu
+    MainMenu,
+    Hud,
   },
   mounted() {
     const game = new Game(this.$store);

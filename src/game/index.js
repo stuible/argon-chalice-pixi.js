@@ -26,8 +26,8 @@ export default function (store) {
     const camera = new Camera(app);
 
     // Map
-    const level = new Level("hospital", store);
-    // const level = new Level("highschool", store);
+    // const level = new Level("hospital", store);
+    const level = new Level("highschool", store);
 
     // Player
     const player = level.player;
@@ -48,12 +48,7 @@ export default function (store) {
             return;
         }
 
-        level.level.characters.forEach(character => {
-            if (player.isNear(character.sprite)) {
-                character.interact();
-            }
-        })
-
+        level.action();
 
     }
 
@@ -79,16 +74,6 @@ export default function (store) {
         if (rightKey.isDown) {
             player.move("right");
         }
-
-        // Check if player is near any items
-        level.level.items.forEach((item, index) => {
-            if (player.isNear(item.sprite)) {
-                // Run items interaction
-                item.interact();
-                // Remove item
-                level.removeItem(index)
-            }
-        })
 
     });
 
