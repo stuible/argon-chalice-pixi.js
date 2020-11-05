@@ -153,7 +153,7 @@ export default class {
                                 }
                             ]
                         },
-                        { name: 'Hazel', message: "It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you!" },
+                        { name: 'Hazel', message: "It’s not much! Can you get me a pen !? I totally forgot mine so that’s why I’m asking you!" },
                         { action: () => this.goals.originalGirlfriend.spoken = true }
                     ])
                 }
