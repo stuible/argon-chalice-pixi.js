@@ -35,11 +35,9 @@ export default class {
         // Check if player is near any items
         for (const [index, item] of this.level.items.entries()) {
             if (this.player.isTouching(item.sprite)) {
-                console.log(item)
                 // If item is a collectable, collect and remove it
                 if (item.type == "collectable") {
                     //let store know we collected an item
-                    console.log(item)
                     item.collected(this.store);
                     // Remove item
                     this.removeItem(index)
