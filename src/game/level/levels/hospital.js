@@ -26,7 +26,7 @@ export default class {
         const itemsTexture = PIXI.Texture.from(itemsResource);
         this.itemSpirte = PIXI.Sprite.from(itemsTexture);
 
-        this.background= PIXI.Sprite.from(PIXI.Texture.WHITE);
+        this.background = PIXI.Sprite.from(PIXI.Texture.WHITE);
         this.background.anchor.set(0.5)
         this.background.width = 5000;
         this.background.height = 5000;
@@ -90,6 +90,7 @@ export default class {
                 name: 'Grandpa Wal',
                 message: `it’s looking grim. I still got some fight left in me. I won’t kick the bucket just yet!`
             },
+
             {
                 name: 'Grandpa Wal',
                 message: `By the way isn’t this your last year in high school?`
@@ -100,8 +101,19 @@ export default class {
             },
             {
                 name: 'Grandpa Wal',
-                message: `Grandpa: I wish I finished high school… I was drafted to fight in the army, you know. 
-                Lost a lot of my youth there…. Say, \${player}, can you fulfill one of my wishes?`
+                message: "I studied ar Academia high school you know! But then the war broke out between Republic of Oashaka and Republic Owafuwa."
+            },
+            {
+                name: "Grandpa Wal",
+                message: "Then I had to leave and join the army!!!! Lost a lot of my youth there..."
+            },
+            {
+                name: 'Grandpa Wal',
+                message: `I wish I finished high school and went to prom, but alas my dreams will never come true...`
+            },
+            {
+                name: 'Grandpa Wal',
+                message: `Say, \${player}, could you promise to do something for me?`
             },
             {
                 name: 'Grandpa Wal', question: "Can you enjoy your high school prom with a partner for me? Take a few photographs…. Take someone out… ", answers: [
