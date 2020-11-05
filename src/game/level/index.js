@@ -11,7 +11,7 @@ export default class {
         this.bottom = new PIXI.Container();
 
         this.player = new Player({
-            speed: 10,
+            speed: 4,
             state: store.state,
             walls: this.level?.wallColliders ? level.level.wallColliders.children : []
         });
