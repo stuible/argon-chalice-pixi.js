@@ -101,7 +101,7 @@ export default class {
             },
             {
                 name: 'Grandpa Wal',
-                message: "I studied ar Academia high school you know! But then the war broke out between Republic of Oashaka and Republic Owafuwa."
+                message: "I studied at Academia high school you know! But then the war broke out between Republic of Oashaka and Republic Owafuwa."
             },
             {
                 name: "Grandpa Wal",
