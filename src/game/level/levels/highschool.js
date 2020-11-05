@@ -19,7 +19,7 @@ export default class {
                 spoken: false,
                 collectedItems: false,
                 gaveItems: false,
-                brokeUp: true
+                brokeUp: false
             },
             newGirlfriend: {
                 name: false,
