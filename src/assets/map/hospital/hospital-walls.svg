@@ -1,0 +1,18 @@
+<svg width="108px" height="126px" id="walls" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 126">
+	<defs>
+		<style>
+			.cls-1{fill:#e6efc1;}.cls-2{fill:#d2ccb6;}.cls-3{fill:#c4c4c4;}.cls-4{fill:#fdf8c2;stroke:#010101;stroke-miterlimit:10;stroke-width:0.37px;}.cls-5{fill:#3167b2;}.cls-6{fill:#4287c7;}
+		</style>
+	</defs>
+	<polygon class="cls-1" points="99 9 9.14 9 9 9 9 42 99 42 99 9" />
+	<rect class="cls-2" x="9" y="42" width="90" height="3" />
+	<rect class="cls-3" x="9" width="99" height="9" />
+	<rect class="cls-3" x="-49.5" y="49.5" width="108" height="9" transform="translate(58.5 49.5) rotate(90)" />
+	<rect class="cls-3" y="81" width="108" height="9" />
+	<rect class="cls-3" x="49.5" y="49.5" width="108" height="9" transform="translate(157.5 -49.5) rotate(90)" />
+	<polygon class="cls-1" points="108 90 0.17 90 0 90 0 126 108 126 108 90" />
+	<rect class="cls-3" x="50" y="17" width="18" height="28" />
+	<rect class="cls-4" x="23" y="17.5" width="11.5" height="10.5" />
+	<path class="cls-5" d="M29,21a1.39,1.39,0,0,1,2,0,14.59,14.59,0,0,0,3.5,2.06L34,28H23V22.75Z" />
+	<path class="cls-6" d="M23,28V25s2-3,3-5,2,1,2,1l2,2s3,2,4.5,2v3Z" />
+</svg>

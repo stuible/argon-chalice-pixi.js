@@ -1,0 +1,14 @@
+<svg width="108px" height="126px" id="walls" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 126">
+	<defs>
+		<style>
+			.cls-1{fill:#ed1c24;}
+		</style>
+	</defs>
+	<rect class="cls-1" width="108" height="9" x="0" y="0" />
+	<rect class="cls-1" x="99" y="0" width="9" height="90" />
+	<rect class="cls-1" x="0" y="0" width="9" height="90" />
+	<rect class="cls-1" y="81" x="0" width="108" height="9" />
+	<rect class="cls-1" x="14.62" y="54" width="28.26" height="15.25" />
+	<rect class="cls-1" x="88.19" y="63.13" width="6" height="13" />
+	<rect class="cls-1" x="9" y="9" width="90" height="36" />
+</svg>

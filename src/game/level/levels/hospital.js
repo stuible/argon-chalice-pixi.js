@@ -10,19 +10,23 @@ export default class {
         this.mapScale = 3;
 
         this.player = {
-            x: 500,
-            y: 300,
+            x: 200,
+            y: 125,
         }
 
-        // const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floor.svg"), { scale: this.mapScale });
-        const floorTexture = PIXI.Texture.from(require("@/assets/map/Hospital.jpg"));
+        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/hospital/hospital-floor.svg"), { scale: this.mapScale });
+        const floorTexture = PIXI.Texture.from(floorResource);
         this.floor = PIXI.Sprite.from(floorTexture);
 
-        // const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/Walls.svg"), { scale: this.mapScale });
-        // const wallTexture = PIXI.Texture.from(wallResource);
-        // this.walls = PIXI.Sprite.from(wallTexture);
+        const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/hospital/hospital-walls.svg"), { scale: this.mapScale });
+        const wallTexture = PIXI.Texture.from(wallResource);
+        this.walls = PIXI.Sprite.from(wallTexture);
 
-        // this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/Walls.svg").default, this.mapScale);
+        const itemsResource = new PIXI.resources.SVGResource(require("@/assets/map/hospital/hospital-items.svg"), { scale: this.mapScale });
+        const itemsTexture = PIXI.Texture.from(itemsResource);
+        this.itemSpirte = PIXI.Sprite.from(itemsTexture);
+
+        this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/hospital/hospital-colliders.svg").default, this.mapScale);
 
         this.gridSize = 9 * this.mapScale;
 
@@ -40,10 +44,11 @@ export default class {
 
 
         this.bottom.addChild(this.floor);
-        // this.bottom.addChild(this.itemsContainer);
-        // this.bottom.addChild(this.charactersContainer);
-        // this.top.addChild(this.walls);
-        // this.top.addChild(this.wallColliders);
+        this.bottom.addChild(this.itemSpirte);
+        this.bottom.addChild(this.itemsContainer);
+        this.bottom.addChild(this.charactersContainer);
+        this.top.addChild(this.walls);
+        this.top.addChild(this.wallColliders);
 
         // this.addItems();
         // this.addCharacters();
