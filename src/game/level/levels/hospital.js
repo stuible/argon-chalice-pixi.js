@@ -26,6 +26,12 @@ export default class {
         const itemsTexture = PIXI.Texture.from(itemsResource);
         this.itemSpirte = PIXI.Sprite.from(itemsTexture);
 
+        this.background= PIXI.Sprite.from(PIXI.Texture.WHITE);
+        this.background.anchor.set(0.5)
+        this.background.width = 5000;
+        this.background.height = 5000;
+        this.background.tint = 0xEAE5E1;
+
         this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/hospital/hospital-colliders.svg").default, this.mapScale);
 
         this.gridSize = 9 * this.mapScale;
@@ -42,7 +48,7 @@ export default class {
         this.items = [];
         this.characters = [];
 
-
+        this.bottom.addChild(this.background);
         this.bottom.addChild(this.floor);
         this.bottom.addChild(this.itemSpirte);
         this.bottom.addChild(this.itemsContainer);
