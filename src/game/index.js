@@ -27,7 +27,7 @@ export default function (store) {
 
     // Map
     const level = new Level("hospital", store);
-    // const level = new Level("highschool", store);
+    // const level = new Level("prom", store);
 
     // Player
     const player = level.player;

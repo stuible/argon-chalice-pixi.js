@@ -1,4 +1,4 @@
-import { Highschool, Hospital } from './levels';
+import { Highschool, Hospital, Prom } from './levels';
 import { Player } from '../sprites';
 
 import * as PIXI from 'pixi.js'
@@ -11,7 +11,7 @@ export default class {
         this.bottom = new PIXI.Container();
 
         this.player = new Player({
-            speed: 3,
+            speed: 10,
             state: store.state,
             walls: this.level?.wallColliders ? level.level.wallColliders.children : []
         });
@@ -70,6 +70,13 @@ export default class {
         else if (levelName == 'highschool') {
             this.destoyLevel();
             this.level = new Highschool(this);
+            this.updatePlayer();
+            this.top.addChild(this.level.top);
+            this.bottom.addChild(this.level.bottom);
+        }
+        else if (levelName == 'prom') {
+            this.destoyLevel();
+            this.level = new Prom(this);
             this.updatePlayer();
             this.top.addChild(this.level.top);
             this.bottom.addChild(this.level.bottom);
