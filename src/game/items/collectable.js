@@ -14,6 +14,7 @@ export default class {
     }
 
     collected(store) {
+        console.log({ name: this.name, image: this.image })
         store.commit('collectedItem', { name: this.name, image: this.image });
     }
 

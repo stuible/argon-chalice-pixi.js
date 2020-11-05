@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
 import { Thing, Collectable } from '../../items'
-import { Person, Hazelnut, Pine, Coco } from '../../sprites'
+import { Person, Hazelnut, Pine, Coco, Pea } from '../../sprites'
 import store from '../../../store';
 
 export default class {
@@ -28,7 +28,7 @@ export default class {
         const unsubscribe = this.store.subscribe((mutation, state) => {
             // If item was collected
             if (mutation.type == "collectedItem") {
-                if (this.store.state.items.some(item => item.name = "pen")) this.goals.originalGirlfriend.collectedItems = true;
+                if (this.store.state.items.some(item => item.name == "pen")) this.goals.originalGirlfriend.collectedItems = true;
             }
         })
 
@@ -71,19 +71,33 @@ export default class {
 
 
     addItems() {
-        const item = new Thing({
-            x: 25, y: 42, gridSize: this.gridSize, interact: () => {
-                console.log("you are near the thing")
-            }
-        })
-        this.items.push(item);
-        this.itemsContainer.addChild(item.sprite);
+        // const item = new Thing({
+        //     x: 25, y: 42, gridSize: this.gridSize, interact: () => {
+        //         console.log("you are near the thing")
+        //     }
+        // })
+        // this.items.push(item);
+        // this.itemsContainer.addChild(item.sprite);
 
         const pen = new Collectable({
             x: 25, y: 80, gridSize: this.gridSize, name: "pen", image: require("@/assets/items/pen.svg")
         })
-        this.items.push(pen);
-        this.itemsContainer.addChild(pen.sprite);
+        const basketball = new Collectable({
+            x: 27, y: 80, gridSize: this.gridSize, name: "basketball", image: require("@/assets/items/basketball.svg")
+        })
+        const book = new Collectable({
+            x: 29, y: 80, gridSize: this.gridSize, name: "book", image: require("@/assets/items/book.svg")
+        })
+        const paper = new Collectable({
+            x: 105, y: 80, gridSize: this.gridSize, name: "paper", image: require("@/assets/items/paper.svg")
+        })
+        const phone = new Collectable({
+            x: 25, y: 50, gridSize: this.gridSize, name: "phone", image: require("@/assets/items/phone.svg")
+        })
+
+
+        this.items = this.items.concat([pen, basketball, book, paper, phone])
+        this.itemsContainer.addChild(pen.sprite, basketball.sprite, book.sprite, paper.sprite, phone.sprite);
     }
 
     addCharacters() {
@@ -102,12 +116,12 @@ export default class {
 
                 if (!this.goals.originalGirlfriend.spoken && !this.goals.originalGirlfriend.collectedItems) {
                     store.commit("addDialogue", [
-                        { name: 'Hazelnut', message: "Good morning ${player}. Hope your Saturday was fun.  Without me." },
-                        { name: 'Hazelnut', message: "… I’m not mad really, I just wished we spent more time together, y’know? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
+                        { name: 'Hazel', message: "Good morning ${player}. Hope your Saturday was fun.  Without me." },
+                        { name: 'Hazel', message: "… I’m not mad really, I just wished we spent more time together, y’know? We’ve already been dating for a week and I-- I don’t know, I feel a bit neglected ?" },
                         { name: '${player}', message: "I’m sorry, Hazel but I let you know that I visit my grandfather every weekend.We can always go out together after or on Sundays?" },
-                        { name: 'Hazelnut', message: "Well... actuall... Can you get me a few things ? It’s small things, I promise!" },
+                        { name: 'Hazel', message: "Well... actuall... Can you get me a few things ? It’s small things, I promise!" },
                         {
-                            name: 'Hazelnut', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [
+                            name: 'Hazel', question: "Can you collect them for me ? So I know you’re willing to do things for me ?", answers: [
                                 {
                                     answer: "Of course!",
                                     action: () => console.log("You answered Right")
@@ -118,16 +132,16 @@ export default class {
                                 }
                             ]
                         },
-                        { name: 'Hazelnut', message: "Yay! It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you!" },
+                        { name: 'Hazel', message: "Yay! It’s not much! Can you get me a pen, a ruler and Wally’s notes? I know you guys are best friends and I forgot to take my own 3: so that’s why I’m asking you!" },
                         { action: () => this.goals.originalGirlfriend.spoken = true }
                     ])
                 }
                 else if (!this.goals.originalGirlfriend.collectedItems) {
-                    store.commit("addDialogue", { name: 'Hazelnut', message: "Thank you for offering to find a PEN for me :)" },);
+                    store.commit("addDialogue", { name: 'Hazel', message: "Thank you for offering to find a PEN for me :)" },);
                 }
                 else if (this.goals.originalGirlfriend.collectedItems) {
                     store.commit("addDialogue", [
-                        { name: 'Hazelnut', message: "OMG Thank you so much for the pen!" },
+                        { name: 'Hazel', message: "OMG Thank you so much for the pen!" },
                         {
                             action: () => {
                                 store.commit("removeItem", "pen")
@@ -167,6 +181,19 @@ export default class {
         })
         this.characters.push(coco);
         this.charactersContainer.addChild(coco.sprite);
+
+
+        const pea = new Pea({
+            x: 86, y: 53, gridSize: this.gridSize, interact: () => {
+                if (!this.goals.originalGirlfriend.complete) {
+                    store.commit("addDialogue", [
+                        { name: 'Pine', message: "Hi ${player}! I hope you're having a great day!" }
+                    ]);
+                }
+            }
+        })
+        this.characters.push(pea);
+        this.charactersContainer.addChild(pea.sprite);
     }
 
 

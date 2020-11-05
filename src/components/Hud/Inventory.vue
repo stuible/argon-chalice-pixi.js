@@ -30,6 +30,11 @@ export default {};
         list-style: none;
         padding: 0;
         margin: 0;
+        display: flex;
+
+        li {
+          flex-grow: 1;
+        }
 
         img {
             width: 2em;

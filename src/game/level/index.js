@@ -33,20 +33,21 @@ export default class {
         this.player.update(delta);
 
         // Check if player is near any items
-        this.level.items.forEach((item, index) => {
+        for (const [index, item] of this.level.items.entries()) {
             if (this.player.isTouching(item.sprite)) {
-
+                console.log(item)
                 // If item is a collectable, collect and remove it
                 if (item.type == "collectable") {
                     //let store know we collected an item
+                    console.log(item)
                     item.collected(this.store);
                     // Remove item
                     this.removeItem(index)
+                    break;
                 }
-
-
             }
-        })
+        }
+
     }
 
     // User initiated action (pressed action button)

@@ -87,11 +87,11 @@ export default class {
                 Mom made you some soup so if you can hold it down, take a sip?`
             },
             {
-                name: 'Grandpa',
+                name: 'Grandpa Wal',
                 message: `it’s looking grim. I still got some fight left in me. I won’t kick the bucket just yet!`
             },
             {
-                name: 'Grandpa',
+                name: 'Grandpa Wal',
                 message: `By the way isn’t this your last year in high school?`
             },
             {
@@ -99,12 +99,12 @@ export default class {
                 message: `*Nods*`
             },
             {
-                name: 'Grandpa',
+                name: 'Grandpa Wal',
                 message: `Grandpa: I wish I finished high school… I was drafted to fight in the army, you know. 
                 Lost a lot of my youth there…. Say, \${player}, can you fulfill one of my wishes?`
             },
             {
-                name: 'Grandpa', question: "Can you enjoy your high school prom with a partner for me? Take a few photographs…. Take someone out… ", answers: [
+                name: 'Grandpa Wal', question: "Can you enjoy your high school prom with a partner for me? Take a few photographs…. Take someone out… ", answers: [
                     {
                         answer: "Yes",
                         action: () => console.log("You answered Right")
@@ -120,7 +120,7 @@ export default class {
                 message: `Of course Grandpa. It’s not a problem, I actually have a girlfriend, you just haven’t met her yet! 
                 Prom’s in a week so look forward to my stories!`
             },
-            { name: 'Grampa', action: () => { this.levelManager.load('highschool') } }
+            { name: 'Grampa Wal', action: () => { this.levelManager.load('highschool') } }
         ])
 
 
