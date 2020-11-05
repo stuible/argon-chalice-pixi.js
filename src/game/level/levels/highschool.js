@@ -122,15 +122,6 @@ export default class {
     }
 
     addCharacters() {
-        const person = new Person({ x: 30, y: 45, gridSize: this.gridSize })
-
-        person.interact = () => {
-            store.commit("addDialogue", { name: 'Bob', message: "Hi!  I'm Bob, the purple square!" })
-        }
-
-        this.characters.push(person);
-        this.charactersContainer.addChild(person.sprite);
-
 
         const hazelnut = new Hazelnut({
             x: 31, y: 68, gridSize: this.gridSize, interact: () => {
