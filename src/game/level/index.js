@@ -26,7 +26,7 @@ export default class {
             if (mutation.type == "startGame") {
                 this.load(levelName)
             }
-            else if(mutation.type == "actionEvent"){
+            else if (mutation.type == "actionEvent") {
                 this.action();
             }
         })
@@ -54,11 +54,13 @@ export default class {
 
     // User initiated action (pressed action button)
     action() {
-        this.level.characters.forEach(character => {
+        for (const [index, character] of this.level.characters.entries()) {
             if (this.player.isNear(character.sprite)) {
                 character.interact();
+                break;
             }
-        })
+        }
+
     }
 
     // Loads new level
