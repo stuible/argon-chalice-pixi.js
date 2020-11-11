@@ -18,9 +18,7 @@ export default createStore({
                 // autoPlay: true,
                 volume: 0.3,
                 loop: false,
-                complete: function () {
-                    console.log('Sound finished');
-                }
+                preload: true
             })
         }
     },
