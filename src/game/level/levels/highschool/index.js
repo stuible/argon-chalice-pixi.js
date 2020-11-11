@@ -96,7 +96,7 @@ export default class {
         // Background sound
         this.soundtrack = PIXISound.Sound.from({
             url: require("@/assets/audio/school.mp3"),
-            // autoPlay: true,
+            autoPlay: true,
             volume: 0.25,
             loop: true,
             complete: function () {
