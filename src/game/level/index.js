@@ -35,17 +35,27 @@ export default class {
     // Main update loop function
     update(delta) {
         this.player.update(delta);
+        this.level.update(delta);
 
+        let hitCollectable = false;
+        let hitKiller = false;
         // Check if player is near any items
         for (const [index, item] of this.level.items.entries()) {
             if (this.player.isTouching(item.sprite)) {
                 // If item is a collectable, collect and remove it
-                if (item.type == "collectable") {
+                if (item.type == "collectable" && !hitCollectable) {
                     //let store know we collected an item
                     item.collected(this.store);
                     // Remove item
                     this.removeItem(index)
-                    break;
+                    hitCollectable = true;
+                }
+                else if (item.type == "killer" && !hitKiller) {
+                    // Player died!  Respawn player in hallway
+                    this.player.x = this.level?.player?.x ? this.level?.player?.x : this.player.x;
+                    this.player.y = this.level?.player?.y ? this.level?.player?.y : this.player.y;
+                    this.player.startRespawn();
+                    hitKiller = true;
                 }
             }
         }

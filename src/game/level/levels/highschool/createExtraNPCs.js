@@ -45,7 +45,7 @@ export default function (store, goals, gridSize, levelManager) {
             interact: () => store.commit("addDialogue", { name: 'Chloro', message: "Little busy right busy right now ${player}, talk later?" },)
         }),
         new NPC({
-            name: 'sittingdownmustardshirt',
+            name: 'sittingdownmustardshirtlonghair',
             x: 80,
             y: 40,
             scale: 0.17,
@@ -54,7 +54,7 @@ export default function (store, goals, gridSize, levelManager) {
             interact: () => store.commit("addDialogue", { name: 'Bromo', message: "Hmmmmm I have no idea what these symbols mean" },)
         }),
         new NPC({
-            name: 'sittingdownmustardshirt',
+            name: 'sittingdowngreenshirt',
             x: 78,
             y: 44,
             scale: 0.17,

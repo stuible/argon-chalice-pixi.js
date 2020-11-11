@@ -7,6 +7,9 @@ export default function (gridSize) {
             x: 25, y: 80, gridSize: gridSize, name: "pen", image: require("@/assets/items/pen.svg")
         }),
         new Collectable({
+            x: 29, y: 80, gridSize: gridSize, name: "ruler", image: require("@/assets/items/ruler.svg")
+        }),
+        new Collectable({
             x: 27, y: 40, gridSize: gridSize, name: "basketball", image: require("@/assets/items/basketball.svg")
         }),
         new Collectable({

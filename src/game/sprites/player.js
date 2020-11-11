@@ -81,16 +81,21 @@ export default class {
         //Player Proximity
         this.nearThreshold = 40;
 
-        this.rotator = new Rotation(this.sprite);
+        // this.rotator = new Rotation(this.sprite);
 
         this.directions = [];
-        this._previousDirections = [];
-        this._targetAngle = 0;
+        // this._previousDirections = [];
+        // this._targetAngle = 0;
 
         this._speed = speed ? speed : 5;
 
         this._speedBonusIncrease = this._speed * 1.3;
         this._speedPenaltyDecrease = -(this._speed / 1.4);
+
+
+        // Respawn flash
+        this.respawnFlashCount = 0;
+        this.respawnInterval = undefined;
     }
 
     isTouching(sprite) {
@@ -219,14 +224,14 @@ export default class {
 
     }
 
-    rotateTowardsAngle() {
-        this._targetAngle = this.rotator.getAngleFromDirections(this._previousDirections);
+    // rotateTowardsAngle() {
+    //     this._targetAngle = this.rotator.getAngleFromDirections(this._previousDirections);
 
-        let bias = 0.85; // Weighted bias for rotate spring function
+    //     let bias = 0.85; // Weighted bias for rotate spring function
 
-        this.sprite.angle = this.sprite.angle * bias + this._targetAngle * (1 - bias);
+    //     this.sprite.angle = this.sprite.angle * bias + this._targetAngle * (1 - bias);
 
-    }
+    // }
 
     updateCollisionBox() {
         this.collisionBox.y = this.hitbox.y - (this.hitbox.height / 2) + this.collisionBox.offset.y;
@@ -235,11 +240,13 @@ export default class {
 
     // Returns element that player is touching or false if they arn't touching anything
     isTouching(sprite) {
+        this.updateCollisionBox();
         return isTouching(this.collisionBox, sprite)
     }
 
     // Returns element that player is near or false if they arn't touching anything
     isNear(sprite) {
+        this.updateCollisionBox();
         return isTouching(this.nearCollisionBox, sprite);
     }
 
@@ -296,8 +303,35 @@ export default class {
         this._previousDirections = this.directions.length > 0 ? [...this.directions] : this._previousDirections; // If there are directions, save them
     }
 
+
+
+    startRespawn() {
+        function toggleVisibility(sprite) {
+            sprite.visible = !sprite.visible;
+            console.log("toggle")
+            // if (++this.respawnFlashCount === 5) {
+            //     clearInterval(this.respawnInterval);
+            //     // this.sprite.visible = true;
+            // }
+        }
+        console.log("lets start respawn!")
+        let numberOfTimes = 12;
+        let delay = 150;
+
+        console.log(this.sprite)
+
+        for (let i = 0; i < numberOfTimes; i++) {
+            console.log(this.sprite)
+            setTimeout(() => {
+                toggleVisibility(this.sprite)
+            }, delay * i);
+        }
+
+    }
+
     // User pressed action button
     action() {
 
     }
+
 }

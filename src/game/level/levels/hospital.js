@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js'
 import PIXISound from 'pixi-sound';
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
-import { Thing } from '../../items'
 import { Person } from '../../sprites'
 
 export default class {
@@ -64,7 +63,7 @@ export default class {
         // Background sound
         this.soundtrack = PIXISound.Sound.from({
             url: require("@/assets/audio/hospital.mp3"),
-            autoPlay: true,
+            // autoPlay: true,
             volume: 0.25,
             loop: true,
             complete: function () {
@@ -74,10 +73,13 @@ export default class {
 
     }
 
+    update(delta){
+        
+    }
+
     addItems() {
-        const item = new Thing({ x: 25, y: 42, gridSize: this.gridSize })
-        this.items.push(item);
-        this.itemsContainer.addChild(item.sprite);
+        // this.items.push(item);
+        // this.itemsContainer.addChild(item.sprite);
     }
 
     addCharacters() {

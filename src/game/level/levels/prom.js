@@ -61,6 +61,10 @@ export default class {
 
     }
 
+    update(delta) {
+
+    }
+
     addItems() {
         // const item = new Thing({ x: 25, y: 42, gridSize: this.gridSize })
         // this.items.push(item);

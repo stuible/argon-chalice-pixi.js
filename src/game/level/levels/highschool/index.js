@@ -6,7 +6,8 @@ import store from '@/store';
 
 import createExtraNPCs from './createExtraNPCs';
 import createGirlfriends from './createGirlfriends';
-import createItems from './createItems';
+import createCollectables from './createCollectables';
+import createKillerItems from './createKillerItems';
 
 export default class {
     constructor(levelManager) {
@@ -80,6 +81,8 @@ export default class {
         this.items = [];
         this.characters = [];
 
+        this.objectsWithUpdateFunctions = [];
+
 
         this.bottom.addChild(this.floor);
         this.bottom.addChild(this.itemsContainer);
@@ -93,7 +96,7 @@ export default class {
         // Background sound
         this.soundtrack = PIXISound.Sound.from({
             url: require("@/assets/audio/school.mp3"),
-            autoPlay: true,
+            // autoPlay: true,
             volume: 0.25,
             loop: true,
             complete: function () {
@@ -107,11 +110,15 @@ export default class {
 
     addItems() {
 
-        const items = createItems(this.gridSize);
+        const items = createCollectables(this.gridSize);
+        const killers = createKillerItems(this.gridSize);
 
 
-        this.items = this.items.concat(items)
-        this.itemsContainer.addChild(...items.map(item => item.sprite));
+        this.items = this.items.concat([...items, ...killers])
+        this.itemsContainer.addChild(...items.map(item => item.sprite), ...killers.map(item => item.sprite));
+
+        // Add any objects with update functions to our list for inclusion in the main update loop
+        this.objectsWithUpdateFunctions = this.objectsWithUpdateFunctions.concat(this.items.filter(item => item.update != undefined))
     }
 
     addCharacters() {
@@ -122,6 +129,10 @@ export default class {
 
         this.characters = this.characters.concat([...girlfriends, ...randomNPCs])
         this.charactersContainer.addChild(...girlfriends.map(gf => gf.sprite), ...randomNPCs.map(npc => npc.sprite));
+    }
+
+    update(delta) {
+        this.objectsWithUpdateFunctions.forEach(object => object.update(delta))
     }
 
 
