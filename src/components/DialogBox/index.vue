@@ -21,7 +21,7 @@
       </button>
     </div>
 
-    <button @click="nextMessage()" v-if="!isQuestion">
+    <button class="next-message" @click="nextMessage()" v-if="!isQuestion">
       [ Press Spacebar ]
     </button>
   </div>
@@ -143,10 +143,28 @@ export default {
   }
 }
 
+button {
+  border: none;
+  margin-right: 1em;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  padding: 0.5em 1em;
+  font-size: 0.75em;
+  background-color: unset;
+
+  &.next-message {
+    margin-top: 0.5em;
+    border-bottom-color: black;
+    font-weight: bold;
+  }
+}
+
 .answers {
+  margin-top: 0.5em;
   button {
     &.selected {
-      background-color: red;
+      // background-color: red;
+      border-bottom-color: black;
+      font-weight: bold;
     }
   }
 }
