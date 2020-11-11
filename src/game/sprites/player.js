@@ -20,6 +20,7 @@ export default class {
             require("@/assets/player/Back-4.svg"),
         ];
         let sideImages = [
+            require("@/assets/player/Side-1.svg"),
             require("@/assets/player/Side-2.svg"),
             require("@/assets/player/Side-3.svg"),
             require("@/assets/player/Side-4.svg"),
