@@ -20,10 +20,10 @@ export default class {
             require("@/assets/player/Back-4.svg"),
         ];
         let sideImages = [
-            require("@/assets/player/Side-1.svg"),
             require("@/assets/player/Side-2.svg"),
             require("@/assets/player/Side-3.svg"),
             require("@/assets/player/Side-4.svg"),
+            require("@/assets/player/Side-1.svg"),
             require("@/assets/player/Side-5.svg"),
         ];
 
@@ -38,7 +38,7 @@ export default class {
         this.sprite = new PIXI.AnimatedSprite(this.textures[this.spriteDirection]);
 
         this.sprite.loop = true;
-        this.sprite.animationSpeed = 0.1;
+        this.sprite.animationSpeed = 0.2;
         this.sprite.play();
 
 
