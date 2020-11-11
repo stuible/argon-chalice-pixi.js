@@ -43,8 +43,10 @@ export default class {
 
 
         this.sprite.anchor.set(0.5);
-        this.sprite.width = this.sprite.width * 0.75;
-        this.sprite.height = this.sprite.height * 0.75;
+        this.sprite.scale.set(0.75);
+        // console.log(this.sprite.width)
+        // this.sprite.width = this.sprite.width * 0.75;
+        // this.sprite.height = this.sprite.height * 0.75;
         this.sprite.y = y ?? 0;
         this.sprite.x = x ?? 0;
 
@@ -56,10 +58,10 @@ export default class {
         // Hidden Hitbox sprite that doesn't rotate
         this.hitbox = PIXI.Sprite.from(PIXI.Texture.WHITE);
         this.hitbox.anchor.set(0.5);
-        this.hitbox.width = this.sprite.width * 0.75;
-        this.hitbox.height = this.sprite.height * 0.75;
-        this.hitbox.y = this.sprite.y;
-        this.hitbox.x = this.sprite.x;
+        this.hitbox.width = 30;
+        this.hitbox.height = 50;
+        // this.hitbox.y = this.sprite.y;
+        // this.hitbox.x = this.sprite.x;
         this.hitbox.tint = 0xFF0000;
         this.hitbox.visible = false;
 
