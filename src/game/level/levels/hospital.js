@@ -63,7 +63,7 @@ export default class {
         // Background sound
         this.soundtrack = PIXISound.Sound.from({
             url: require("@/assets/audio/hospital.mp3"),
-            // autoPlay: true,
+            autoPlay: true,
             volume: 0.25,
             loop: true,
             complete: function () {
@@ -74,7 +74,7 @@ export default class {
     }
 
     update(delta){
-        
+
     }
 
     addItems() {
