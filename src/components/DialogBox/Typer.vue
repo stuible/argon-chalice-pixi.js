@@ -13,6 +13,7 @@ export default {
     inetrval: undefined
   }),
   mounted() {
+    this.$store.state.dialogSound.play();
     this.interval = setInterval(this.incrementTextIndex, (1 / this.characterArray.length) * 500);
   },
   computed: {
@@ -29,8 +30,10 @@ export default {
   watch: {
     text() {
       this.textIndex = 1;
+      this.$store.state.dialogSound.stop();
       clearInterval(this.interval);
       this.interval = setInterval(this.incrementTextIndex, (1 / this.characterArray.length) * 500);
+      this.$store.state.dialogSound.play();
     },
   },
   methods: {
@@ -39,6 +42,7 @@ export default {
           else  {
               console.log('clearn interval')
               clearInterval(this.interval);
+              this.$store.state.dialogSound.stop();
           }
       }
   },

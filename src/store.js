@@ -1,6 +1,8 @@
 // Global State
 import { createStore } from 'vuex'
 
+import PIXISound from 'pixi-sound';
+
 export default createStore({
     state() {
         return {
@@ -10,7 +12,16 @@ export default createStore({
             playerName: "Player",
             score: 0,
             dialog: [],
-            items: []
+            items: [],
+            dialogSound: PIXISound.Sound.from({
+                url: require("@/assets/audio/dialog.mp3"),
+                // autoPlay: true,
+                volume: 0.3,
+                loop: false,
+                complete: function () {
+                    console.log('Sound finished');
+                }
+            })
         }
     },
     mutations: {
@@ -28,7 +39,7 @@ export default createStore({
         startGame(state) {
             state.gameStarted = true;
         },
-        setName(state, name){
+        setName(state, name) {
             state.playerName = name;
         },
         pauseGame(state) {
@@ -44,7 +55,7 @@ export default createStore({
             state.items = state.items.filter(x => x.name !== itemName);
         },
         // Empty action used to trigger actions in game
-        actionEvent(state){
+        actionEvent(state) {
 
         }
     },
