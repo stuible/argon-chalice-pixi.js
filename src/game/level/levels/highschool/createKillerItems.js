@@ -9,6 +9,9 @@ export default function (gridSize) {
         new Dodgeball({
             startX: 21, startY: 54, endX: 48, gridSize: gridSize,  speed: 8.1
         }),
+        new Dodgeball({
+            startX: 21, startY: 49, endX: 48, gridSize: gridSize,  speed: 12.3
+        }),
     ]
 
 }
