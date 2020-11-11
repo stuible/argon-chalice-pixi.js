@@ -14,13 +14,16 @@
       <button
         v-for="(answer, key) in currentMessage.answers"
         v-bind:key="key"
+        :class="{ selected: selectedAnswer == key }"
         @click="runAnswerAction(answer.action)"
       >
         {{ answer.answer }}
       </button>
     </div>
 
-    <button @click="nextMessage()">[ Press Spacebar ]</button>
+    <button @click="nextMessage()" v-if="!isQuestion">
+      [ Press Spacebar ]
+    </button>
   </div>
 </template>
 
@@ -33,15 +36,40 @@ export default {
     Typer,
   },
   props: ["messages"],
+  data: () => ({
+    selectedAnswer: 0,
+  }),
+  mounted() {
+    // Setup dialog-related Event Listeners
+    window.addEventListener("keydown", (event) => {
+      // Switch between answers
+      if (event.key == "ArrowRight") {
+        this.nextAnswer();
+      } else if (event.key == "ArrowLeft") {
+        this.previousAnswer();
+        // Handle Action button (spacer)
+      } else if (event.key == " ") {
+        // If no more dialog messages, send event to game
+        console.log(this.currentMessage);
+        if (this.currentMessage == undefined) this.$store.commit("actionEvent");
+        // If there are, then run action and procees to next dialog
+        else if (this.isQuestion) {
+          this.runAnswerAction(
+            this.currentMessage.answers[this.selectedAnswer].action
+          );
+        } else this.nextMessage();
+      }
+    });
+  },
   computed: {
     currentMessage() {
       return this.messages[0];
     },
     isMessage() {
-      return "message" in this.currentMessage;
+      return this.currentMessage ? "message" in this.currentMessage : false;
     },
     isQuestion() {
-      return "question" in this.currentMessage;
+      return this.currentMessage ? "question" in this.currentMessage : false;
     },
     currentMessageName() {
       return fillTemplate(this.currentMessage.name, {
@@ -67,9 +95,22 @@ export default {
       action();
       this.nextMessage();
     },
+    nextAnswer() {
+      if (!this.isQuestion) return;
+      if (this.selectedAnswer < this.currentMessage.answers.length - 1) {
+        this.selectedAnswer++;
+      } else this.selectedAnswer = 0;
+    },
+    previousAnswer() {
+      if (!this.isQuestion) return;
+      if (this.selectedAnswer >= this.currentMessage.answers.length - 1) {
+        this.selectedAnswer--;
+      } else this.selectedAnswer = this.currentMessage.answers.length - 1;
+    },
   },
   watch: {
     async currentMessage() {
+      this.selectedAnswer = 0;
       if (this.currentMessage && this.currentMessage.action) {
         await this.currentMessage.action();
         this.nextMessage();
@@ -99,6 +140,14 @@ export default {
     // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: 0.05em; /* Adjust as needed */
     animation: typing 3.5s steps(40, end);
+  }
+}
+
+.answers {
+  button {
+    &.selected {
+      background-color: red;
+    }
   }
 }
 </style>

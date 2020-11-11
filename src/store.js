@@ -42,6 +42,10 @@ export default createStore({
         },
         removeItem(state, itemName) {
             state.items = state.items.filter(x => x.name !== itemName);
+        },
+        // Empty action used to trigger actions in game
+        actionEvent(state){
+
         }
     },
     getters: {

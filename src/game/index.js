@@ -26,8 +26,8 @@ export default function (store) {
     const camera = new Camera(app);
 
     // Map
-    const level = new Level("hospital", store);
-    // const level = new Level("prom", store);
+    // const level = new Level("hospital", store);
+    const level = new Level("highschool", store);
 
     // Player
     const player = level.player;
@@ -38,19 +38,6 @@ export default function (store) {
     app.stage.addChild(level.top);
     app.stage.addChild(player.sprite);
 
-    // Setup callack function for spacebar (Main action button)
-    spacebar.press = () => {
-        console.log("Pressed space bar")
-        if (!store.state.gameStarted) return
-
-        if (store.state.dialog.length > 0) {
-            store.commit("nextDialog");
-            return;
-        }
-
-        level.action();
-    }
-
     app.ticker.add((delta) => {
 
         if (store.state.gamePaused || !store.state.gameStarted) return;
@@ -60,6 +47,9 @@ export default function (store) {
 
         // Let level know this is a new frame
         level.update(delta);
+
+        // Don't do anything else if there's active dialogue
+        if (store.state.dialog.length > 0) return;
 
         if (downKey.isDown) {
             player.move("down");

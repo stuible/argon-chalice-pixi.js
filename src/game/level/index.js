@@ -25,6 +25,9 @@ export default class {
             if (mutation.type == "startGame") {
                 this.load(levelName)
             }
+            else if(mutation.type == "actionEvent"){
+                this.action();
+            }
         })
     }
 

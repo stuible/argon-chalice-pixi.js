@@ -6,7 +6,42 @@ import { Rotation, Animation } from './utils';
 
 export default class {
     constructor({ speed, state, walls, x, y }) {
-        this.sprite = PIXI.Sprite.from(require("@/assets/characters/player.svg"));
+
+        let frontImages = [
+            require("@/assets/player/Front-1.svg"),
+            require("@/assets/player/Front-2.svg"),
+            require("@/assets/player/Front-3.svg"),
+            require("@/assets/player/Front-4.svg"),
+        ];
+        let backImages = [
+            require("@/assets/player/Back-1.svg"),
+            require("@/assets/player/Back-2.svg"),
+            require("@/assets/player/Back-3.svg"),
+            require("@/assets/player/Back-4.svg"),
+        ];
+        let sideImages = [
+            require("@/assets/player/Side-2.svg"),
+            require("@/assets/player/Side-3.svg"),
+            require("@/assets/player/Side-4.svg"),
+            require("@/assets/player/Side-5.svg"),
+        ];
+
+        this.textures = {
+            front: frontImages.map(image => PIXI.Texture.from(image)),
+            back: backImages.map(image => PIXI.Texture.from(image)),
+            side: sideImages.map(image => PIXI.Texture.from(image)),
+        }
+        this.spriteDirection = 'front'
+
+
+        this.sprite = new PIXI.AnimatedSprite(this.textures[this.spriteDirection]);
+
+        this.sprite.loop = true;
+        this.sprite.animationSpeed = 0.1;
+        this.sprite.play();
+
+
+        // this.sprite = PIXI.Sprite.from(require("@/assets/characters/player.svg"));
         this.sprite.anchor.set(0.5);
         this.sprite.width = 30;
         this.sprite.height = 75;
@@ -15,14 +50,6 @@ export default class {
 
         this.walls = walls ?? [];
 
-        // this.animator = new Animation(this.sprite, {
-        //     textures: [
-        //         require('@/assets/ant/ant-1.png'),
-        //         require('@/assets/ant/ant-2.png'),
-        //         require('@/assets/ant/ant-3.png'),
-        //         require('@/assets/ant/ant-4.png')
-        //     ]
-        // });
 
         this.state = state;
 
@@ -138,15 +165,56 @@ export default class {
     }
 
     update(delta) {
-        // this.animate(delta);
+        this.animate();
         // this.rotateTowardsAngle();
         this.directions = []; // Clear directions
     }
 
-    animate(delta) {
-        this.animator.enabled = this.isMoving;
-        this.animator.speed = map(this.speed, 10, 2, this._speed + this._speedPenaltyDecrease, this._speed + this._speedBonusIncrease);
-        this.animator.update(delta);
+    changeSpriteSet(direction) {
+        if (this.spriteDirection != direction) {
+            if (direction == "back") {
+                this.sprite.textures = this.textures[direction];
+                this.sprite.scale.x = Math.abs(this.sprite.scale.x)
+                this.spriteDirection = direction;
+            }
+            else if (direction == "front") {
+                this.sprite.textures = this.textures[direction];
+                this.sprite.scale.x = Math.abs(this.sprite.scale.x)
+                this.spriteDirection = direction;
+            }
+            else if (direction == "left") {
+                this.sprite.textures = this.textures.side;
+                this.sprite.scale.x = -Math.abs(this.sprite.scale.x)
+                this.spriteDirection = direction;
+            }
+            else if (direction == "right") {
+                this.sprite.textures = this.textures.side;
+                this.sprite.scale.x = Math.abs(this.sprite.scale.x)
+                this.spriteDirection = direction;
+            }
+
+        }
+
+    }
+
+    animate() {
+        if (this.isMoving) {
+            if (this.directions[0] == "up") {
+                this.changeSpriteSet("back")
+            }
+            else if (this.directions[0] == "down") {
+                this.changeSpriteSet("front")
+            }
+            else if (this.directions[0] == "right") {
+                this.changeSpriteSet("right")
+            }
+            else if (this.directions[0] == "left") {
+                this.changeSpriteSet("left")
+            }
+            this.sprite.play();
+        }
+        else this.sprite.stop();
+
     }
 
     rotateTowardsAngle() {

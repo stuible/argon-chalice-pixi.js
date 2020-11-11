@@ -4,6 +4,7 @@ import Hazelnut from './characters/hazelnut';
 import Pine from './characters/pine';
 import Coco from './characters/coco';
 import Pea from './characters/pea';
+import NPC from './characters/npc';
 
 export {
     Player,
@@ -11,5 +12,6 @@ export {
     Hazelnut,
     Pine,
     Coco,
-    Pea
+    Pea,
+    NPC
 }
