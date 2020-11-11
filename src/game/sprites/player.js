@@ -42,10 +42,9 @@ export default class {
         this.sprite.play();
 
 
-        // this.sprite = PIXI.Sprite.from(require("@/assets/characters/player.svg"));
         this.sprite.anchor.set(0.5);
-        this.sprite.width = 30;
-        this.sprite.height = 75;
+        this.sprite.width = this.sprite.width * 0.75;
+        this.sprite.height = this.sprite.height * 0.75;
         this.sprite.y = y ?? 0;
         this.sprite.x = x ?? 0;
 

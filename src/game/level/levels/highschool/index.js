@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+import PIXISound from 'pixi-sound';
 import colliderContainerFromSvg from '../../utils/colliderContainerFromSvg';
 
 import store from '@/store';
@@ -37,7 +38,7 @@ export default class {
 
         // Recieve store mutation events
         const unsubscribe = this.store.subscribe((mutation, state) => {
-            
+
             // If item was collected
             if (mutation.type == "collectedItem") {
                 if (this.store.state.items.some(item => item.name == "pen")) this.goals.originalGirlfriend.collectedItems = true;
@@ -88,6 +89,17 @@ export default class {
 
         this.addItems();
         this.addCharacters();
+
+        // Background sound
+        this.soundtrack = PIXISound.Sound.from({
+            url: require("@/assets/audio/school.mp3"),
+            autoPlay: true,
+            volume: 0.25,
+            loop: true,
+            complete: function () {
+                console.log('Sound finished');
+            }
+        });
 
     }
 

@@ -2,6 +2,7 @@ import { Highschool, Hospital, Prom } from './levels';
 import { Player } from '../sprites';
 
 import * as PIXI from 'pixi.js'
+// import PIXISound from 'pixi-sound';
 
 export default class {
     constructor(levelName, store) {
@@ -87,6 +88,7 @@ export default class {
     }
 
     destoyLevel() {
+        this.level?.soundtrack?.stop();
         while (this.top.children[0]) {
             this.top.removeChild(this.top.children[0]);
         }
