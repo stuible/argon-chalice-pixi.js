@@ -4,13 +4,15 @@ export default class {
     constructor({ startX, startY, endX, gridSize, speed }) {
         this.startX = startX < endX ? startX * gridSize : endX * gridSize;
         this.endX = startX < endX ? endX * gridSize : startX * gridSize;
-        this.sprite = PIXI.Sprite.from(PIXI.Texture.WHITE);
-        this.sprite.width = gridSize * 1;
-        this.sprite.height = gridSize * 1;
+
+
+        const spriteResource = new PIXI.resources.SVGResource(require("@/assets/items/dodgeball.svg"), { height: gridSize * 1.3, width: gridSize * 1.3 });
+        const spriteTexture = PIXI.Texture.from(spriteResource);
+
+        this.sprite = PIXI.Sprite.from(spriteTexture);
         this.sprite.x = startX * gridSize;
         this.sprite.y = startY * gridSize;
         this.name = "dodgeball";
-        this.sprite.tint = 0xFF0000;
 
         this.speed = speed ?? 5;
 
