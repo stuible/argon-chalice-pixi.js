@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+import PIXISound from 'pixi-sound'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
 import { Person } from '../../sprites'
@@ -58,6 +59,17 @@ export default class {
         // this.addItems();
         // this.addCharacters();
         this.addDialog();
+
+        // Background sound
+        this.soundtrack = PIXISound.Sound.from({
+            url: require("@/assets/audio/prom_2.mp3"),
+            autoPlay: true,
+            volume: 0.25,
+            loop: true,
+            complete: function () {
+                console.log('Sound finished');
+            }
+        });
 
     }
 
