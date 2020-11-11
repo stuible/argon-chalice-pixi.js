@@ -1,7 +1,7 @@
-import Thing from './thing'
+import Item from './item'
 import Collectable from './collectable'
 
 export {
-    Thing,
+    Item,
     Collectable
 }

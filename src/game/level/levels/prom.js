@@ -1,7 +1,6 @@
 import * as PIXI from 'pixi.js'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
-import { Thing } from '../../items'
 import { Person } from '../../sprites'
 
 export default class {
@@ -63,9 +62,9 @@ export default class {
     }
 
     addItems() {
-        const item = new Thing({ x: 25, y: 42, gridSize: this.gridSize })
-        this.items.push(item);
-        this.itemsContainer.addChild(item.sprite);
+        // const item = new Thing({ x: 25, y: 42, gridSize: this.gridSize })
+        // this.items.push(item);
+        // this.itemsContainer.addChild(item.sprite);
     }
 
     addCharacters() {
