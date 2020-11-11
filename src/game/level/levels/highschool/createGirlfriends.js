@@ -72,16 +72,16 @@ export default function (store, goals, gridSize, levelManager) {
             else if (goals.originalGirlfriend.brokeUp && !goals.newGirlfriend.name) {
                 store.commit("addDialogue", [
                     { name: 'Pine', message: "Oh hey, ${player}! Rumor has it you and Hazel broke up.  I'm so sorry" },
+                    { name: 'Pine', message: "My boyfriend recently broke up with me so I know what it's like... It sucks..." },
                     {
-                        name: 'Pine', question: "Would you want to hang out some time?", answers: [
+                        name: 'Pine', question: "This may be a bad time but could you look around for my math textbook, I'm freaking out trying to find it", answers: [
                             {
                                 answer: "Sure Pine!",
                                 action: () => {
                                     goals.newGirlfriend.name = 'pine'
                                     store.commit("addDialogue", [
-                                        { name: 'Pine', message: "OMG Cool, see you soon!!!" },
-                                        { name: 'Pine', message: "BTW, I'm missing my paper that's due after lunch, I really need to find it" },
-                                        { name: 'Pine', message: "Have you seen it!?" },
+                                        { name: 'Pine', message: "OMG Amazing, I know I must have left it in a classroom but I can't find it anywhere" },
+                                        { name: 'Pine', message: "I need this textbook for my math class, I'm going to fail without it!" },
                                     ]);
                                 }
                             },
@@ -89,7 +89,7 @@ export default function (store, goals, gridSize, levelManager) {
                                 answer: "I'm pretty busy but I'll let you know",
                                 action: () => {
                                     store.commit("addDialogue", [
-                                        { name: 'Pine', message: "Aww okay... see you around then." }
+                                        { name: 'Pine', message: "Oh okay... see you around then." }
                                     ]);
                                 }
                             }
@@ -97,21 +97,27 @@ export default function (store, goals, gridSize, levelManager) {
                     },
                 ]);
             }
+            // Player has begun to do tasks for pine, trying to become her BF
             else if (goals.newGirlfriend.name == 'pine') {
-                if (!goals.newGirlfriend.collectedItems) {
+                if (!goals.pine.collectedItems) {
                     console.log(goals)
                     store.commit("addDialogue", [
-                        { name: 'Pine', message: "I really need to find that missing paper!!!!!!" },
+                        { name: 'Pine', message: "I really need to find that missing book!!!!!!" },
                     ]);
                 }
-                else if (goals.newGirlfriend.collectedItems && !goals.newGirlfriend.gaveItems) {
+                else if (goals.pine.collectedItems && !goals.pine.gaveItems) {
                     store.commit("addDialogue", [
-                        { name: 'Pine', message: "OMG THANK YOU, Let's go to Prom!" },
+                        { name: 'Pine', message: "OMG THANK YOU!!!!!" },
+                        { name: 'Pine', message: "Now at least I have a chance in hell at passing this math course..." },
                         {
                             action: () => {
-                                goals.newGirlfriend.gaveItems = true
-                                goals.newGirlfriend.promDate = true
-                                levelManager.load('prom')
+                                goals.pine.gaveItems = true
+                            }
+                        },
+                        { name: 'Pine', message: "Bytheway, I have absolutely no idea what's going on with these last 2 questions, could you maybe have a look? 😜" },
+                        {
+                            action: () => {
+                                store.commit("showMathProblem")
                             }
                         },
                     ]);
@@ -247,5 +253,5 @@ export default function (store, goals, gridSize, levelManager) {
         }
     })
 
-    return [hazelnut, coco, pea]
+    return [hazelnut, coco, pea, pine]
 }

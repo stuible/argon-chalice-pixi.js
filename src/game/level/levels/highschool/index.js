@@ -26,10 +26,14 @@ export default class {
                 brokeUp: false
             },
             newGirlfriend: {
-                name: false,
-                gaveItems: false,
+                name: false, // Potential promdatename
+                promDate: false // Girl has accepted you as a prom date
+            },
+            pine: {
                 collectedItems: false,
-                promDate: false
+                gaveItems: false,
+                solvedProblem: false,
+                rejected: false
             }
         }
 
@@ -42,18 +46,32 @@ export default class {
 
             // If item was collected
             if (mutation.type == "collectedItem") {
-                if (this.store.state.items.some(item => item.name == "pen")) this.goals.originalGirlfriend.collectedItems = true;
 
+                // Check if user has collected all of Hazel's Items
+                if (this.store.state.items.some(item => item.name == "pen")
+                    && this.store.state.items.some(item => item.name == "ruler"
+                        && this.store.state.items.some(item => item.name == "paper"))) {
+                    this.goals.originalGirlfriend.collectedItems = true;
+                }
 
-                if (this.goals.newGirlfriend.name == "pine") {
-                    if (this.store.state.items.some(item => item.name == "paper")) this.goals.newGirlfriend.collectedItems = true;
+                // Check if user has collected all of pines items
+                if (this.store.state.items.some(item => item.name == "book")) {
+                    this.goals.pine.collectedItems = true;
                 }
-                if (this.goals.newGirlfriend.name == "pea") {
-                    if (this.store.state.items.some(item => item.name == "book")) this.goals.newGirlfriend.collectedItems = true;
-                }
-                if (this.goals.newGirlfriend.name == "coco") {
-                    if (this.store.state.items.some(item => item.name == "basketball")) this.goals.newGirlfriend.collectedItems = true;
-                }
+
+                // if (this.goals.newGirlfriend.name == "pea") {
+                //     if (this.store.state.items.some(item => item.name == "book")) this.goals.newGirlfriend.collectedItems = true;
+                // }
+                // if (this.goals.newGirlfriend.name == "coco") {
+                //     if (this.store.state.items.some(item => item.name == "basketball")) this.goals.newGirlfriend.collectedItems = true;
+                // }
+            }
+            else if(mutation.type == "solvedMathProblem"){
+                this.goals.pine.solvedProblem = true;
+            }
+            else if(mutation.type == "rejected"){
+                this.goals.newGirlfriend.name = false;
+                this.goals[mutation.payload].rejected = true;
             }
         })
 

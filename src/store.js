@@ -13,6 +13,7 @@ export default createStore({
             score: 0,
             dialog: [],
             items: [],
+            showMathProblem: false,
             dialogSound: PIXISound.Sound.from({
                 url: require("@/assets/audio/dialog.mp3"),
                 // autoPlay: true,
@@ -51,6 +52,16 @@ export default createStore({
         },
         removeItem(state, itemName) {
             state.items = state.items.filter(x => x.name !== itemName);
+        },
+        showMathProblem(state){
+            state.showMathProblem = true;
+        },
+        solvedMathProblem(state){
+            state.showMathProblem = false;
+        },
+        // Empty action used to communicate rejections
+        rejected(state, payload){
+    
         },
         // Empty action used to trigger actions in game
         actionEvent(state) {
