@@ -23,6 +23,7 @@ export default class {
                 spoken: false,
                 collectedItems: false,
                 gaveItems: false,
+                recievedNotes: false,
                 brokeUp: false
             },
             newGirlfriend: {

@@ -16,16 +16,30 @@ export default function (store, goals, gridSize, levelManager) {
             y: 52,
             gridSize: gridSize,
             image: require("@/assets/characters/npc-2.svg"),
-            interact: () => store.commit("addDialogue", [
-                { name: 'Chester', message: "Oh hey ${player}!  What's up!  How's your gramps doing?" },
-                { name: 'Player', message: "He's dong about the same, still in good spirits though!" },
-                { name: 'Player', message: "~Hey man, Hazel's asked me to grab some notes off of you, would you happen to have them?" },
-                { name: 'Chester', message: "For sure!" },
-                { name: 'Chester', message: " *Hands over notes*" },
-                { action: () => store.commit('collectedItem', { name: "notes", image: require("@/assets/items/paper.svg") }) },
-                { name: 'Chester', message: "BTW - How is Hazel? she's been acting a little off lately..." },
+            interact: () => {
+                // If the player doens't have the notes yet
+                if (!goals.originalGirlfriend.recievedNotes && goals.originalGirlfriend.spoken) {
+                    store.commit("addDialogue", [
+                        { name: 'Chester', message: "Oh hey ${player}!  What's up!  How's your gramps doing?" },
+                        { name: 'Player', message: "He's dong about the same, still in good spirits though!" },
+                        { name: 'Player', message: "~Hey man, Hazel's asked me to grab some notes off of you, would you happen to have them?" },
+                        { name: 'Chester', message: "For sure!" },
+                        { name: 'Chester', message: " *Hands over notes*" },
+                        { action: () => store.commit('collectedItem', { name: "notes", image: require("@/assets/items/paper.svg") }) },
+                        { name: 'Chester', message: "BTW - How is Hazel? she's been acting a little off lately..." },
 
-            ])
+                    ])
+                    goals.originalGirlfriend.recievedNotes = true;
+                }
+                // If they do have the notes
+                else {
+                    store.commit("addDialogue", [
+                        { name: 'Chester', message: "Hey ${player}!  Keep on keepin on!" },
+
+                    ])
+                }
+
+            }
         }),
         new NPC({
             name: 'whitehoody',

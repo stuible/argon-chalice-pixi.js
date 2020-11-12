@@ -37,10 +37,12 @@ export default function (store, goals, gridSize, levelManager) {
             }
             else if (goals.originalGirlfriend.collectedItems && !goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [
-                    { name: 'Hazel', message: "OMG Thank you so much for the pen!" },
+                    { name: 'Hazel', message: "OMG Thank you so much for getting that stuff" },
                     {
                         action: () => {
                             store.commit("removeItem", "pen")
+                            store.commit("removeItem", "ruler")
+                            store.commit("removeItem", "notes")
                             goals.originalGirlfriend.gaveItems = true;
                         }
                     },
