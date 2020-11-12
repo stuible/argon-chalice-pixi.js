@@ -144,24 +144,25 @@ export default function (store, goals, gridSize, levelManager) {
             }
             else if (!goals.newGirlfriend.name) {
                 store.commit("addDialogue", [
-
+                    { name: 'Coco', message: "Hey ${player}. Oh Hazel just broke up with you?? Such a bummer..." },
+                    { name: 'Coco', message: "I've had a pretty rough day too, lost my PHONE and somehow locked my WALLET inside a locker" },
                     {
-                        name: 'Coco', question: "${player}! It must be tough for you right now, want to hang out?", answers: [
+                        name: 'Coco', question: "Any chance you could help me?  Might get your mind off things or something.", answers: [
                             {
-                                answer: "Sure Coco!",
+                                answer: "Sure Coco",
                                 action: () => {
                                     goals.newGirlfriend.name = 'coco'
                                     store.commit("addDialogue", [
-                                        { name: 'Coco', message: "Amazing!!!!!, see you soon!!! <3" },
-                                        { name: 'Pea', message: "BTW, Have you seen my basketball?  It means a lot to me and I can't find it!" },
+                                        { name: 'Coco', message: "I appreciate it ${player}, I swear I had my PHONE during yesterdays drama class" },
+                                        { name: 'Coco', message: "And my wallet is locked away in that lock on the west wing..." },
                                     ]);
                                 }
                             },
                             {
-                                answer: "I'm pretty busy but I'll let you know",
+                                answer: "I've got wayy to much homework I'm sorry Coco",
                                 action: () => {
                                     store.commit("addDialogue", [
-                                        { name: 'Coco', message: "Really?? That sucks... see you around then..." }
+                                        { name: 'Coco', message: "Alright then, wish me luck..." }
                                     ]);
                                 }
                             }
@@ -170,24 +171,60 @@ export default function (store, goals, gridSize, levelManager) {
                 ]);
             }
             else if (goals.newGirlfriend.name == 'coco') {
-                if (!goals.newGirlfriend.collectedItems) {
+
+                if (!goals.coco.collectedItems) {
                     store.commit("addDialogue", [
-                        { name: 'Coco', message: "I really need to find my basketball!!!!!!" },
+                        { name: 'Coco', message: "Any luck with the PHONE and WALLET?  I'm such a mess right? 💀" },
                     ]);
                 }
-                else if (goals.newGirlfriend.collectedItems && !goals.newGirlfriend.gaveItems) {
+                else if (goals.coco.collectedItems && !goals.coco.gaveItems) {
                     store.commit("addDialogue", [
-                        { name: 'Coco', message: "OMG THANK YOU, Let's go to Prom!" },
+                        { name: 'COCO', message: "OMG YOU FOUND THEM 🦀" },
                         {
                             action: () => {
-                                goals.newGirlfriend.gaveItems = true
-                                goals.newGirlfriend.promDate = true
-                                levelManager.load('prom')
+                                goals.coco.gaveItems = true
                             }
                         },
-                    ]);
-                }
+                        {
+                            name: "Coco",
+                            message: "This means everything to me, thank you so much",
+                        },
+                        {
+                            name: "Coco",
+                            question: "I'm just going to go ahead and say it, Want to go to prom?",
+                            answers: [
+                                {
+                                    answer: "Absolutely!",
+                                    action: () =>
+                                        store.commit("addDialogue", [
+                                            {
+                                                name: "Coco",
+                                                message: "Sick, I can't wait 😻☠️",
+                                            },
+                                            {
+                                                action: () => store.commit("chosenPromdate", "coco")
+                                            }
+                                        ]),
+                                },
+                                {
+                                    answer: "I'd rather we just be friends",
+                                    action: () =>
+                                        store.commit("addDialogue", [
+                                            {
+                                                name: "Coco",
+                                                message: "Okie, friend",
+                                            },
+                                            {
+                                                action: () => store.commit("rejected", "coco"),
+                                            },
+                                        ]),
+                                }
+                            ]
+                        }
 
+                    ])
+
+                }
             }
         }
     })
