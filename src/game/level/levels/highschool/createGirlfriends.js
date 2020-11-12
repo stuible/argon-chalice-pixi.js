@@ -7,7 +7,7 @@ export default function (store, goals, gridSize, levelManager) {
     // -------------------------------------
 
     const hazelnut = new Hazelnut({
-        x: 31, y: 68, gridSize: gridSize, interact: () => {
+        x: 42, y: 85, gridSize: gridSize, interact: () => {
 
             if (!goals.originalGirlfriend.spoken && !goals.originalGirlfriend.collectedItems) {
                 store.commit("addDialogue", [
@@ -246,7 +246,49 @@ export default function (store, goals, gridSize, levelManager) {
                                 goals.pea.gaveItems = true
                             }
                         },
-                    ]);
+                        {
+                            name: "Pea",
+                            message: "Soooooo... ☺️",
+                        },
+                        {
+                            name: "Pea",
+                            question: "This is a little soon I know, but I don't have a prom date. Would you want to go with me?",
+                            answers: [
+                                {
+                                    answer: "Absolutely!",
+                                    action: () =>
+                                        store.commit("addDialogue", [
+                                            {
+                                                name: "Pea",
+                                                message: "Incredible, I can't wait 😻",
+                                            },
+                                            {
+                                                name: "Pea",
+                                                message: "I'll see you right after basketball practice 😜"
+                                            },
+                                            {
+                                                action: () => store.commit("chosenPromdate", "pea")
+                                            }
+                                        ]),
+                                },
+                                {
+                                    answer: "I'd rather we just be friends",
+                                    action: () =>
+                                        store.commit("addDialogue", [
+                                            {
+                                                name: "Pea",
+                                                message: "That's totally cool, I'll see you around",
+                                            },
+                                            {
+                                                action: () => store.commit("rejected", "pea"),
+                                            },
+                                        ]),
+                                }
+                            ]
+                        }
+
+                    ])
+
                 }
             }
         }

@@ -16,7 +16,7 @@ export default class {
 
         this.player = {
             x: 1000,
-            y: 1850,
+            y: 2400,
         }
 
         this.goals = {
@@ -82,7 +82,7 @@ export default class {
                 }
 
                 // Check if user has collected all of peas items
-                if (this.store.state.items.some(item => item.name == "basletball")
+                if (this.store.state.items.some(item => item.name == "basketball")
                     && this.store.state.items.some(item => item.name == "jersey")) {
                     this.goals.pea.collectedItems = true;
                 }
@@ -94,20 +94,28 @@ export default class {
                 this.goals.newGirlfriend.name = false;
                 this.goals[mutation.payload].rejected = true;
             }
+            else if (mutation.type == "chosenPromdate") {
+                this.goals.newGirlfriend.promDate = true;
+                this.goals.newGirlfriend.name = mutation.payload ?? this.goals.newGirlfriend.name;
+            }
             else if (mutation.type == "solvedComboLock") {
                 this.goals.coco.openedLocker = true;
             }
         })
 
-        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg?data"), { scale: this.mapScale });
-        const floorTexture = PIXI.Texture.from(floorResource);
-        this.floor = PIXI.Sprite.from(floorTexture);
+        // const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg?data"), { scale: this.mapScale });
+        // const floorTexture = PIXI.Texture.from(floorResource);
+        // this.floor = PIXI.Sprite.from(floorTexture);
 
-        const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/Walls.svg?data"), { scale: this.mapScale });
-        const wallTexture = PIXI.Texture.from(wallResource);
-        this.walls = PIXI.Sprite.from(wallTexture);
+        // const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/Walls.svg?data"), { scale: this.mapScale });
+        // const wallTexture = PIXI.Texture.from(wallResource);
+        // this.walls = PIXI.Sprite.from(wallTexture);
 
-        this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/Walls.svg").default, this.mapScale);
+        const schoolResource = new PIXI.resources.SVGResource(require("@/assets/map/school.svg?data"), { scale: this.mapScale });
+        const schoolTexture = PIXI.Texture.from(schoolResource);
+        this.floor = PIXI.Sprite.from(schoolTexture);
+
+        this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/school-colliders.svg").default, this.mapScale);
 
         this.gridSize = 9 * this.mapScale;
 
@@ -128,7 +136,7 @@ export default class {
 
         this.bottom.addChild(this.floor);
 
-        this.top.addChild(this.walls);
+        // this.top.addChild(this.walls);
         this.top.addChild(this.wallColliders);
         this.top.addChild(this.charactersContainer);
         this.top.addChild(this.itemsContainer);

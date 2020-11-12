@@ -12,8 +12,8 @@ export default function (store, goals, gridSize, levelManager) {
         }),
         new NPC({
             name: 'chester',
-            x: 72,
-            y: 52,
+            x: 73,
+            y: 74,
             gridSize: gridSize,
             image: require("@/assets/characters/npc-2.svg?data"),
             interact: () => {

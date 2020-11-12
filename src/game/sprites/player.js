@@ -157,10 +157,14 @@ export default class {
     set x(x) {
         this.sprite.x = x;
         this.hitbox.x = x;
+
+        console.log({ x: this.sprite.x / 27, y: this.sprite.y / 27 })
     }
     set y(y) {
         this.sprite.y = y;
         this.hitbox.y = y;
+
+        console.log({ x: this.sprite.x / 27, y: this.sprite.y / 27 })
     }
     set height(h) {
         this.sprite.height = h;

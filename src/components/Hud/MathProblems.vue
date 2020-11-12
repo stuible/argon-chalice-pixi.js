@@ -76,11 +76,13 @@ export default {
             answers: [
               {
                 answer: "Yes Absolutely!!",
-                action: () =>
+                action: () => {
                   this.$store.commit("addDialogue", {
                     name: "Pine",
                     message: "OMG Cool, let's do this thing 😻",
-                  }),
+                  });
+                  this.$store.commit("chosenPromdate", "pine");
+                },
               },
               {
                 answer: "I see you more as a friend",

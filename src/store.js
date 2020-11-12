@@ -73,6 +73,10 @@ export default createStore({
         rejected(state, payload){
     
         },
+        // Empty action used to communicate selecting a promdate
+        chosenPromdate(state, payload){
+    
+        },
         // Empty action used to trigger actions in game
         actionEvent(state) {
 
