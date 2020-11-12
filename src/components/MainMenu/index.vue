@@ -2,8 +2,18 @@
   <div id="main-menu">
     <div class="title">Macademia High</div>
     <p class="tagline">
-      Welcome to Macademia High, where things are absolutely nuts 🌰
+      Welcome to Macademia High, where things are absolutely nuts! 🌰
     </p>
+    <div class="controls">
+      <div>
+        <img src="@/assets/icons/keyboard.svg" alt="" />
+        <div>Move with arrow keys</div>
+      </div>
+      <div>
+        <img src="@/assets/icons/space-bar.svg" alt="" />
+        <div>Interact wih Space bar</div>
+      </div>
+    </div>
     <p>Enroll Now!</p>
     <div id="enrollment">
       <label for="studentname">Name</label>
@@ -46,9 +56,21 @@ export default {
     margin-bottom: 1em;
   }
 
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >div {
+      margin: 1em;
+    }
+    img {
+      width: 5em;
+    }
+  }
+
   .tagline {
     font-size: 1.15em;
-    margin-bottom: 5em;
+    // margin-bottom: 5em;
   }
 
   button {
