@@ -4,8 +4,8 @@ export default function (store, goals, gridSize, levelManager) {
     return [
         new NPC({
             name: 'combo-note',
-            x: 25,
-            y: 63,
+            x: 77,
+            y: 74,
             scale: 10,
             gridSize: gridSize,
             image: require("@/assets/items/locker-note.svg?data"),

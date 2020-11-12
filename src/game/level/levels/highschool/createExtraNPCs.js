@@ -4,8 +4,8 @@ export default function (store, goals, gridSize, levelManager) {
     return [
         new NPC({
             name: 'greenshirtnpc',
-            x: 73,
-            y: 60,
+            x: 142,
+            y: 78,
             gridSize: gridSize,
             image: require("@/assets/characters/npc-1.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Garland', message: "Hey ${player}" },)
@@ -43,34 +43,34 @@ export default function (store, goals, gridSize, levelManager) {
         }),
         new NPC({
             name: 'whitehoody',
-            x: 45,
-            y: 68,
+            x: 136,
+            y: 76,
             gridSize: gridSize,
             image: require("@/assets/characters/npc-3.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Bobby', message: "Sup yo?" },)
         }),
         new NPC({
             name: 'jane',
-            x: 39,
-            y: 78,
+            x: 83,
+            y: 66.5,
             scale: 0.175,
             gridSize: gridSize,
             image: require("@/assets/characters/sitting-student-1.svg?data"),
-            interact: () => store.commit("addDialogue", { name: 'Jane', message: "..." },)
+            interact: () => store.commit("addDialogue", { name: 'Jane', message: "I wonder who dropped that ruler..." },)
         }),
         new NPC({
             name: 'sittingdownmustardshirt',
-            x: 43,
-            y: 81,
+            x: 105,
+            y: 66.5,
             scale: 0.17,
             gridSize: gridSize,
             image: require("@/assets/characters/sitting-student-2.svg?data"),
-            interact: () => store.commit("addDialogue", { name: 'Chloro', message: "Little busy right busy right now ${player}, talk later?" },)
+            interact: () => store.commit("addDialogue", { name: 'Chloro', message: "Oh Hey ${player}, You see that jersey that someone left out on the tennis courts?" },)
         }),
         new NPC({
             name: 'sittingdownmustardshirtlonghair',
-            x: 80,
-            y: 40,
+            x: 47.1,
+            y: 98.8,
             scale: 0.17,
             gridSize: gridSize,
             image: require("@/assets/characters/sitting-student-3.svg?data"),
@@ -78,12 +78,12 @@ export default function (store, goals, gridSize, levelManager) {
         }),
         new NPC({
             name: 'sittingdowngreenshirt',
-            x: 78,
-            y: 44,
+            x: 100.1,
+            y: 88,
             scale: 0.17,
             gridSize: gridSize,
             image: require("@/assets/characters/sitting-student-4.svg?data"),
-            interact: () => store.commit("addDialogue", { name: 'Floro', message: "I'm soooo lost" },)
+            interact: () => store.commit("addDialogue", { name: 'Floro', message: "Somebody lost their phone in the drama room, I can't beleive nobody has stolen it yet!" },)
         })
     ]
 }

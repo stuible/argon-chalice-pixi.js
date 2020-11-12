@@ -33,7 +33,7 @@ export default function (store, goals, gridSize, levelManager) {
                 ])
             }
             else if (!goals.originalGirlfriend.collectedItems) {
-                store.commit("addDialogue", { name: 'Hazel', message: "Thank you for offering to find a PEN, RULER and those NOTES Chester took" },);
+                store.commit("addDialogue", { name: 'Hazel', message: "Thank you for offering to find a PEN, RULER and those NOTES Chester took.  I saw him by the other lockers!" },);
             }
             else if (goals.originalGirlfriend.collectedItems && !goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [
@@ -66,7 +66,7 @@ export default function (store, goals, gridSize, levelManager) {
     // -------------------------------------
 
     const pine = new Pine({
-        x: 50, y: 68, gridSize: gridSize, interact: () => {
+        x: 73, y: 57, gridSize: gridSize, interact: () => {
             if (!goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [
                     { name: 'Pine', message: "Hey ${player}, you still dating Hazel?" }
@@ -136,7 +136,7 @@ export default function (store, goals, gridSize, levelManager) {
     // -------------------------------------
 
     const coco = new Coco({
-        x: 55, y: 58, gridSize: gridSize, interact: () => {
+        x: 64, y: 74, gridSize: gridSize, interact: () => {
             if (!goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [
                     { name: 'Coco', message: "Hi ${player}! Are you really still dating Hazel???????" }
@@ -197,7 +197,7 @@ export default function (store, goals, gridSize, levelManager) {
     // -------------------------------------
 
     const pea = new Pea({
-        x: 86, y: 53, gridSize: gridSize, interact: () => {
+        x: 58, y: 80, gridSize: gridSize, interact: () => {
             if (!goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [
                     { name: 'Pea', message: "Hi ${player}! I hope you're having a great day!" }
@@ -215,7 +215,7 @@ export default function (store, goals, gridSize, levelManager) {
                                     goals.newGirlfriend.name = 'pea'
                                     store.commit("addDialogue", [
                                         { name: 'Pea', message: "The BASKETBALL must be in the gym but people were playing dodgeball so I couldn't check" },
-                                        { name: 'Pea', message: "The JERSEY has to be in the school because I never took it home, no idea where though" },
+                                        { name: 'Pea', message: "The JERSEY has to be in the school because I never took it home, I hope I didn't leave it outside..." },
                                     ]);
                                 }
                             },

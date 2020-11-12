@@ -7,22 +7,22 @@ export default function (gridSize) {
             x: 39, y: 98.5, gridSize: gridSize, name: "pen", image: require("@/assets/items/pen.svg?data")
         }),
         new Collectable({
-            x: 62, y: 98, gridSize: gridSize, name: "ruler", image: require("@/assets/items/ruler.svg?data")
+            x: 87, y: 67, gridSize: gridSize, name: "ruler", image: require("@/assets/items/ruler.svg?data")
         }),
         new Collectable({
-            x: 27, y: 40, gridSize: gridSize, name: "basketball", image: require("@/assets/items/basketball.svg?data")
+            x: 26, y: 60, gridSize: gridSize, name: "basketball", image: require("@/assets/items/basketball.svg?data")
         }),
         new Collectable({
-            x: 92, y: 39, gridSize: gridSize, name: "book", image: require("@/assets/items/book.svg?data")
+            x: 115, y: 66, gridSize: gridSize, name: "book", image: require("@/assets/items/book.svg?data")
+        }),
+        // new Collectable({
+        //     x: 115, y: 45, gridSize: gridSize, name: "paper", image: require("@/assets/items/paper.svg?data")
+        // }),
+        new Collectable({
+            x: 131, y: 101, gridSize: gridSize, name: "phone", image: require("@/assets/items/phone.svg?data")
         }),
         new Collectable({
-            x: 115, y: 45, gridSize: gridSize, name: "paper", image: require("@/assets/items/paper.svg?data")
-        }),
-        new Collectable({
-            x: 125, y: 70, gridSize: gridSize, name: "phone", image: require("@/assets/items/phone.svg?data")
-        }),
-        new Collectable({
-            x: 27, y: 70, gridSize: gridSize, name: "jersey", image: require("@/assets/items/jersey.svg?data")
+            x: 121, y: 68, gridSize: gridSize, name: "jersey", image: require("@/assets/items/jersey.svg?data")
         })
     ]
 
