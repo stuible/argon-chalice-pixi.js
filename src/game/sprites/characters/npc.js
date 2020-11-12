@@ -9,7 +9,7 @@ export default class {
         this.image = image;
         this.sprite = PIXI.Sprite.from(spriteTexture);
         // const aspectRatio = this.sprite.width / this.sprite.height;
-        this.sprite.scale.set(1);
+        // this.sprite.scale.set(1);
         // this.sprite.width = this.sprite.width * (scale ?? 1);
         // this.sprite.height = this.sprite.height * (scale ?? 1);
         this.sprite.y = y * gridSize;

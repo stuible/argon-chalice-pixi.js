@@ -8,6 +8,7 @@ import createExtraNPCs from './createExtraNPCs';
 import createGirlfriends from './createGirlfriends';
 import createCollectables from './createCollectables';
 import createKillerItems from './createKillerItems';
+import createInteractiveItem from './createInteractiveItems';
 
 export default class {
     constructor(levelManager) {
@@ -67,10 +68,10 @@ export default class {
                 //     if (this.store.state.items.some(item => item.name == "basketball")) this.goals.newGirlfriend.collectedItems = true;
                 // }
             }
-            else if(mutation.type == "solvedMathProblem"){
+            else if (mutation.type == "solvedMathProblem") {
                 this.goals.pine.solvedProblem = true;
             }
-            else if(mutation.type == "rejected"){
+            else if (mutation.type == "rejected") {
                 this.goals.newGirlfriend.name = false;
                 this.goals[mutation.payload].rejected = true;
             }
@@ -104,10 +105,12 @@ export default class {
 
 
         this.bottom.addChild(this.floor);
-        this.bottom.addChild(this.itemsContainer);
-        this.bottom.addChild(this.charactersContainer);
+
+
         this.top.addChild(this.walls);
         this.top.addChild(this.wallColliders);
+        this.top.addChild(this.charactersContainer);
+        this.top.addChild(this.itemsContainer);
 
         this.addItems();
         this.addCharacters();
@@ -115,7 +118,7 @@ export default class {
         // Background sound
         this.soundtrack = PIXISound.Sound.from({
             url: require("@/assets/audio/school.mp3"),
-            autoPlay: true,
+            // autoPlay: true,
             volume: 0.25,
             loop: true,
             complete: function () {
@@ -146,8 +149,17 @@ export default class {
 
         const girlfriends = createGirlfriends(this.store, this.goals, this.gridSize, this.levelManager)
 
-        this.characters = this.characters.concat([...girlfriends, ...randomNPCs])
-        this.charactersContainer.addChild(...girlfriends.map(gf => gf.sprite), ...randomNPCs.map(npc => npc.sprite));
+        // Interactive Items act like characters for pragmatic reasons
+        const interactableItems = createInteractiveItem(this.store, this.goals, this.gridSize, this.levelManager)
+
+        this.characters = this.characters.concat([...girlfriends, ...randomNPCs,
+        ...interactableItems
+        ])
+        this.charactersContainer.addChild(
+            ...girlfriends.map(gf => gf.sprite),
+            ...randomNPCs.map(npc => npc.sprite),
+            ...interactableItems.map(item => item.sprite)
+        );
     }
 
     update(delta) {

@@ -1,0 +1,17 @@
+<svg width="3px" height="3px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 3">
+	<defs>
+		<style>
+			.cls-1{fill:#f1e9ab;}.cls-2{fill:#e0d87d;}.cls-3{fill:#dfe477;}.cls-4{font-size:0.5px;fill:#231f20;font-family:InkFree, Ink Free;}
+		</style>
+	</defs>
+	<g id="Layer_2" data-name="Layer 2">
+		<g id="Layer_1-2" data-name="Layer 1">
+			<rect class="cls-1" width="3" height="3.01" />
+			<polygon class="cls-2" points="3 2 3 3 2 3 3 2" />
+			<polygon class="cls-3" points="2 3 2 2 3 2 2 3" />
+			<text class="cls-4" transform="translate(0 2)">
+				36-26-14
+			</text>
+		</g>
+	</g>
+</svg>
