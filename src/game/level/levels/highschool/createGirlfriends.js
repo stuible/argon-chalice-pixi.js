@@ -205,27 +205,25 @@ export default function (store, goals, gridSize, levelManager) {
             }
             else if (!goals.newGirlfriend.name) {
                 store.commit("addDialogue", [
-
+                    { name: 'Pea', message: "${player}!!!! Oh Hazel just broke up with you?? that really really sucks I'm sorry" },
+                    { name: 'Pea', message: "Hey I really want to make you feel better but basketball practice starts soon and I've lost my BASKETBALL and JERSEY..." },
                     {
-                        name: 'Pea', question: "${player}!! I herad about hazel, that sucks, want to chill?", answers: [
+                        name: 'Pea', question: "Is there any chance you could help me find them???", answers: [
                             {
-                                answer: "OK Pea!",
+                                answer: "Of Course Pea!",
                                 action: () => {
                                     goals.newGirlfriend.name = 'pea'
                                     store.commit("addDialogue", [
-                                        { name: 'Pea', message: "YESSSSSS!!!! I can't wait!!!!!!!" },
-                                        { name: 'Pea', message: "BTW, could you please get find my book?  I have no idea where i left it!" },
-                                        {
-                                            // action: () => goals.originalGirlfriend.brokeUp = true
-                                        }
+                                        { name: 'Pea', message: "The BASKETBALL must be in the gym but people were playing dodgeball so I couldn't check" },
+                                        { name: 'Pea', message: "The JERSEY has to be in the school because I never took it home, no idea where though" },
                                     ]);
                                 }
                             },
                             {
-                                answer: "I'm a little busy but maybe later",
+                                answer: "I Really have to get to class, sorry!",
                                 action: () => {
                                     store.commit("addDialogue", [
-                                        { name: 'Pea', message: ":(((((((((((((((((((" }
+                                        { name: 'Pea', message: "It's okay, I Understand." }
                                     ]);
                                 }
                             }
@@ -235,19 +233,17 @@ export default function (store, goals, gridSize, levelManager) {
             }
             else if (goals.newGirlfriend.name == 'pea') {
 
-                if (!goals.newGirlfriend.collectedItems) {
+                if (!goals.pea.collectedItems) {
                     store.commit("addDialogue", [
-                        { name: 'Pea', message: "I really need to find my Book!  Where is it!?" },
+                        { name: 'Pea', message: "Any luck with the BASKETBALL and JERSEY ?  I haven't seen them anywhere!! 😭" },
                     ]);
                 }
-                else if (goals.newGirlfriend.collectedItems && !goals.newGirlfriend.gaveItems) {
+                else if (goals.pea.collectedItems && !goals.pea.gaveItems) {
                     store.commit("addDialogue", [
-                        { name: 'Pea', message: "OMG THANK YOU, Let's go to Prom!" },
+                        { name: 'Pea', message: "OMG THANK YOU SO MUCH 🤩" },
                         {
                             action: () => {
-                                goals.newGirlfriend.gaveItems = true
-                                goals.newGirlfriend.promDate = true
-                                levelManager.load('prom')
+                                goals.pea.gaveItems = true
                             }
                         },
                     ]);
