@@ -15,6 +15,7 @@ export default createStore({
             items: [],
             showMathProblem: false,
             showComboLock: false,
+            promDate: '',
             dialogSound: PIXISound.Sound.from({
                 url: require("@/assets/audio/dialog.mp3"),
                 // autoPlay: true,
@@ -75,7 +76,7 @@ export default createStore({
         },
         // Empty action used to communicate selecting a promdate
         chosenPromdate(state, payload){
-    
+            state.promDate = payload
         },
         // Empty action used to trigger actions in game
         actionEvent(state) {

@@ -97,6 +97,7 @@ export default class {
             else if (mutation.type == "chosenPromdate") {
                 this.goals.newGirlfriend.promDate = true;
                 this.goals.newGirlfriend.name = mutation.payload ?? this.goals.newGirlfriend.name;
+                this.levelManager.load('prom');
             }
             else if (mutation.type == "solvedComboLock") {
                 this.goals.coco.openedLocker = true;

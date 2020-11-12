@@ -159,7 +159,7 @@ export default function (store, goals, gridSize, levelManager) {
                                 }
                             },
                             {
-                                answer: "I've got wayy to much homework I'm sorry Coco",
+                                answer: "Sorry, I've got way to much homework",
                                 action: () => {
                                     store.commit("addDialogue", [
                                         { name: 'Coco', message: "Alright then, wish me luck..." }

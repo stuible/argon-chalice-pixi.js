@@ -2,21 +2,22 @@ import * as PIXI from 'pixi.js'
 import PIXISound from 'pixi-sound'
 import colliderContainerFromSvg from '../utils/colliderContainerFromSvg';
 
-import { Person } from '../../sprites'
+import { Hazelnut, Pine, Coco, Pea } from '@/game/sprites'
 
 export default class {
     constructor(levelManager) {
         this.levelManager = levelManager;
+        this.store = levelManager.store;
         this.mapScale = 3;
 
         this.player = {
-            x: 200,
-            y: 125,
+            x: 850,
+            y: 525,
         }
 
-        // const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/hospital/hospital-floor.svg"), { scale: this.mapScale });
-        // const floorTexture = PIXI.Texture.from(floorResource);
-        // this.floor = PIXI.Sprite.from(floorTexture);
+        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/prom.svg"), { scale: 1.5 });
+        const floorTexture = PIXI.Texture.from(floorResource);
+        this.floor = PIXI.Sprite.from(floorTexture);
 
         // const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/hospital/hospital-walls.svg"), { scale: this.mapScale });
         // const wallTexture = PIXI.Texture.from(wallResource);
@@ -30,9 +31,9 @@ export default class {
         this.background.anchor.set(0.5)
         this.background.width = 5000;
         this.background.height = 5000;
-        this.background.tint = 0xEAE5E1;
+        this.background.tint = 0x103E0E;
 
-        this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/hospital/hospital-colliders.svg").default, this.mapScale);
+        // this.wallColliders = colliderContainerFromSvg(require("!!raw-loader!@/assets/map/hospital/hospital-colliders.svg").default, this.mapScale);
 
         this.gridSize = 9 * this.mapScale;
 
@@ -49,15 +50,15 @@ export default class {
         this.characters = [];
 
         this.bottom.addChild(this.background);
-        // this.bottom.addChild(this.floor);
+        this.bottom.addChild(this.floor);
         // this.bottom.addChild(this.itemSpirte);
         // this.bottom.addChild(this.itemsContainer);
-        // this.bottom.addChild(this.charactersContainer);
+        this.bottom.addChild(this.charactersContainer);
         // this.top.addChild(this.walls);
         // this.top.addChild(this.wallColliders);
 
         // this.addItems();
-        // this.addCharacters();
+        this.addCharacters();
         this.addDialog();
 
         // Background sound
@@ -84,14 +85,25 @@ export default class {
     }
 
     addCharacters() {
-        const person = new Person({ x: 30, y: 45, gridSize: this.gridSize })
-
-        person.interact = () => {
-            store.commit("addDialogue", { name: 'Bob', message: "Hi!  I'm Bob, the purple square!" })
+        Pine, Coco, Pea
+        if (this.store.state.promDate == 'pine') {
+            const pine = new Pine({
+                x: 32, y: 18, gridSize: this.gridSize
+            })
+            this.charactersContainer.addChild(pine.sprite);
         }
-
-        this.characters.push(person);
-        this.charactersContainer.addChild(person.sprite);
+        else if (this.store.state.promDate == 'coco') {
+            const coco = new Coco({
+                x: 32, y: 18, gridSize: this.gridSize
+            })
+            this.charactersContainer.addChild(coco.sprite);
+        }
+        else if (this.store.state.promDate == 'pea') {
+            const pea = new Pea({
+                x: 32, y: 18, gridSize: this.gridSize
+            })
+            this.charactersContainer.addChild(pea.sprite);
+        }
     }
 
     addDialog() {
@@ -100,14 +112,21 @@ export default class {
                 name: 'Principal Nut',
                 message: `Welcome to Prom Everybody`
             },
-
+            {
+                name: this.store.state.promDate,
+                message: `What a special night 💝`
+            },
             {
                 name: 'Grandpa Wal',
                 message: "I'm so proud of you ${player}!  That is a very nice girlfrield you have!"
             },
             {
                 name: '${player}',
-                message: `Thank you Gramps`
+                message: `Thank you Gramps, her name is ${this.store.state.promDate}`
+            },
+            {
+                name: 'Grandpa Wal',
+                message: "And a great name indeed!!!"
             },
             {
                 name: 'THE END',
