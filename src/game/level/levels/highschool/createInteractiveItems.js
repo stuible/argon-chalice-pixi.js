@@ -13,8 +13,8 @@ export default function (store, goals, gridSize, levelManager) {
         }),
         new NPC({
             name: 'combo-lock',
-            x: 35,
-            y: 64,
+            x: 33,
+            y: 85,
             scale: 10,
             gridSize: gridSize,
             image: require("@/assets/items/lock.svg?data"),

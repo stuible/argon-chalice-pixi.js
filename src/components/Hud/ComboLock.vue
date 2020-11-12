@@ -41,7 +41,7 @@ export default {
         this.$store.commit("solvedComboLock");
         this.$store.commit("addDialogue", {
           name: "Player",
-          message: "The lock slid open!",
+          message: "The lock slid open!  AND There's a wallet inside!",
         });
       }
       // Wrong Code

@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import PIXISound from 'pixi-sound';
 import colliderContainerFromSvg from '../../utils/colliderContainerFromSvg';
 
-import store from '@/store';
+import { Locker, Collectable } from '@/game/items'
 
 import createExtraNPCs from './createExtraNPCs';
 import createGirlfriends from './createGirlfriends';
@@ -100,6 +100,17 @@ export default class {
             }
             else if (mutation.type == "solvedComboLock") {
                 this.goals.coco.openedLocker = true;
+                //Open locker
+                this.locker.open();
+                // Remove combo lock sprite
+                this.charactersContainer.removeChild(this.characters.find(x => x.name == 'combo-lock')?.sprite)
+                this.characters = this.characters.filter(x => x.name != 'combo-lock')
+                // Show Wallet
+                const wallet = new Collectable({
+                    x: 33, y: 86.5, gridSize: this.gridSize, name: "wallet", image: require("@/assets/items/wallet.svg?data")
+                })
+                this.items.push(wallet)
+                this.itemsContainer.addChild(wallet.sprite);
             }
         })
 
@@ -119,6 +130,10 @@ export default class {
 
         this.gridSize = 9 * this.mapScale;
 
+        // Locker object that opens
+        this.locker = new Locker({ x: 29, y: 83, gridSize: this.gridSize });
+        this.locker.close();
+
 
         // Main Containers
         this.bottom = new PIXI.Container();
@@ -135,6 +150,7 @@ export default class {
 
 
         this.bottom.addChild(this.floor);
+        this.bottom.addChild(this.locker.sprite);
 
         // this.top.addChild(this.walls);
         this.top.addChild(this.wallColliders);

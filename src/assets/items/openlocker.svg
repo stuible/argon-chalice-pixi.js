@@ -1,0 +1,22 @@
+<svg width="90px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 40">
+	<defs>
+		<style>
+			.a{fill:#5284a4;}.b{fill:#669cb6;}.c{fill:none;stroke:#567cb8;stroke-miterlimit:10;stroke-width:1.0541px;}.d{fill:#234088;}.e{fill:#2b4c5b;}.f{fill:#365d72;}.g{fill:#1c2e5b;}
+		</style>
+	</defs>
+	<rect class="a" width="90" height="36" />
+	<rect class="b" width="90" height="9" />
+	<line class="c" x1="10" y1="9" x2="10" y2="36" />
+	<line class="c" x1="20.5556" y1="9" x2="20.5556" y2="36" />
+	<line class="c" x1="30.5556" y1="9" x2="30.5556" y2="36" />
+	<line class="c" x1="79.4444" y1="9" x2="79.4444" y2="36" />
+	<line class="c" x1="69.4444" y1="9" x2="69.4444" y2="36" />
+	<line class="c" x1="59.4444" y1="9" x2="59.4444" y2="36" />
+	<line class="c" x1="49.4444" y1="9" x2="49.4444" y2="36" />
+	<line class="c" x1="39.4444" y1="9" x2="39.4444" y2="36" />
+	<rect class="d" x="39.8127" y="9" width="9.0853" height="27" />
+	<polygon class="e" points="34.163 40 39.813 36 39.813 9 34.163 13 34.163 40" />
+	<polyline class="f" points="39.444 36 33.795 40 33.795 13 39.444 9 39.813 9 34.163 13 34.163 40 33.795 40" />
+	<rect class="f" x="33.7948" y="37.5625" width="0.3683" height="2.4375" />
+	<rect class="g" x="39.8127" y="14.3125" width="9.0853" height="0.375" />
+</svg>
