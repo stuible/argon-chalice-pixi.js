@@ -126,6 +126,12 @@ export default class {
             }
         });
 
+        this.boingSound = PIXISound.Sound.from({
+            url: require("@/assets/audio/boing.mp3"),
+            volume: 0.5,
+            preload: true
+        });
+
     }
 
 
@@ -164,6 +170,10 @@ export default class {
 
     update(delta) {
         this.objectsWithUpdateFunctions.forEach(object => object.update(delta))
+    }
+
+    respawn(){
+        this.boingSound.play();
     }
 
 

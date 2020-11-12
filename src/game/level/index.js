@@ -55,6 +55,7 @@ export default class {
                     this.player.x = this.level?.player?.x ? this.level?.player?.x : this.player.x;
                     this.player.y = this.level?.player?.y ? this.level?.player?.y : this.player.y;
                     this.player.startRespawn();
+                    this.level.respawn();
                     hitKiller = true;
                 }
             }
