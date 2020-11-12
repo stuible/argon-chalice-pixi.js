@@ -44,6 +44,12 @@ export default class {
                 gaveItems: false,
                 openedLocker: false,
                 rejected: false
+            },
+            // Normie
+            pea: {
+                collectedItems: false,
+                gaveItems: false,
+                rejected: false
             }
         }
 
@@ -59,8 +65,8 @@ export default class {
 
                 // Check if user has collected all of Hazel's Items
                 if (this.store.state.items.some(item => item.name == "pen")
-                    && this.store.state.items.some(item => item.name == "ruler"
-                        && this.store.state.items.some(item => item.name == "notes"))) {
+                    && this.store.state.items.some(item => item.name == "ruler")
+                    && this.store.state.items.some(item => item.name == "notes")) {
                     this.goals.originalGirlfriend.collectedItems = true;
                 }
 
@@ -69,12 +75,17 @@ export default class {
                     this.goals.pine.collectedItems = true;
                 }
 
-                // if (this.goals.newGirlfriend.name == "pea") {
-                //     if (this.store.state.items.some(item => item.name == "book")) this.goals.newGirlfriend.collectedItems = true;
-                // }
-                // if (this.goals.newGirlfriend.name == "coco") {
-                //     if (this.store.state.items.some(item => item.name == "basketball")) this.goals.newGirlfriend.collectedItems = true;
-                // }
+                // Check if user has collected all of cocos items
+                if (this.store.state.items.some(item => item.name == "wallet")
+                    && this.store.state.items.some(item => item.name == "phone")) {
+                    this.goals.coco.collectedItems = true;
+                }
+
+                // Check if user has collected all of peas items
+                if (this.store.state.items.some(item => item.name == "basletball")
+                    && this.store.state.items.some(item => item.name == "jersey")) {
+                    this.goals.pea.collectedItems = true;
+                }
             }
             else if (mutation.type == "solvedMathProblem") {
                 this.goals.pine.solvedProblem = true;
@@ -116,7 +127,6 @@ export default class {
 
 
         this.bottom.addChild(this.floor);
-
 
         this.top.addChild(this.walls);
         this.top.addChild(this.wallColliders);
