@@ -14,6 +14,7 @@ export default createStore({
             dialog: [],
             items: [],
             showMathProblem: false,
+            showComboLock: false,
             dialogSound: PIXISound.Sound.from({
                 url: require("@/assets/audio/dialog.mp3"),
                 // autoPlay: true,
@@ -58,6 +59,15 @@ export default createStore({
         },
         solvedMathProblem(state){
             state.showMathProblem = false;
+        },
+        showComboLock(state){
+            state.showComboLock = true;
+        },
+        hideComboLock(state){
+            state.showComboLock = false;
+        },
+        solvedComboLock(state){
+            state.showComboLock = false;
         },
         // Empty action used to communicate rejections
         rejected(state, payload){

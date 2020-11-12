@@ -20,6 +20,9 @@ export default function (gridSize) {
         }),
         new Collectable({
             x: 125, y: 70, gridSize: gridSize, name: "phone", image: require("@/assets/items/phone.svg?data")
+        }),
+        new Collectable({
+            x: 27, y: 70, gridSize: gridSize, name: "jersey", image: require("@/assets/items/jersey.svg?data")
         })
     ]
 

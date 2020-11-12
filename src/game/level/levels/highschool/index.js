@@ -31,10 +31,18 @@ export default class {
                 name: false, // Potential promdatename
                 promDate: false // Girl has accepted you as a prom date
             },
+            // Emo
             pine: {
                 collectedItems: false,
                 gaveItems: false,
                 solvedProblem: false,
+                rejected: false
+            },
+            // Blonde
+            coco: {
+                collectedItems: false,
+                gaveItems: false,
+                openedLocker: false,
                 rejected: false
             }
         }
@@ -74,6 +82,9 @@ export default class {
             else if (mutation.type == "rejected") {
                 this.goals.newGirlfriend.name = false;
                 this.goals[mutation.payload].rejected = true;
+            }
+            else if (mutation.type == "solvedComboLock") {
+                this.goals.coco.openedLocker = true;
             }
         })
 
@@ -172,7 +183,7 @@ export default class {
         this.objectsWithUpdateFunctions.forEach(object => object.update(delta))
     }
 
-    respawn(){
+    respawn() {
         this.boingSound.play();
     }
 
