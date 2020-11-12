@@ -27,12 +27,13 @@ export default function (store, goals, gridSize, levelManager) {
                             }
                         ]
                     },
-                    { name: 'Hazel', message: "It’s not much! Can you get me a pen !? I totally forgot mine so that’s why I’m asking you!" },
+                    { name: 'Hazel', message: "It’s not much! I just totally forgot a few things today" },
+                    { name: 'Hazel', message: "I need a PEN, a RULER and Chester's NOTES, I know you guys are friends!" },
                     { action: () => goals.originalGirlfriend.spoken = true }
                 ])
             }
             else if (!goals.originalGirlfriend.collectedItems) {
-                store.commit("addDialogue", { name: 'Hazel', message: "Thank you for offering to find a PEN for me :)" },);
+                store.commit("addDialogue", { name: 'Hazel', message: "Thank you for offering to find a PEN, RULER and those NOTES Chester took" },);
             }
             else if (goals.originalGirlfriend.collectedItems && !goals.originalGirlfriend.brokeUp) {
                 store.commit("addDialogue", [

@@ -11,12 +11,21 @@ export default function (store, goals, gridSize, levelManager) {
             interact: () => store.commit("addDialogue", { name: 'Garland', message: "Hey ${player}" },)
         }),
         new NPC({
-            name: 'student',
+            name: 'chester',
             x: 72,
             y: 52,
             gridSize: gridSize,
             image: require("@/assets/characters/npc-2.svg"),
-            interact: () => store.commit("addDialogue", { name: 'Johnny', message: "Sup" },)
+            interact: () => store.commit("addDialogue", [
+                { name: 'Chester', message: "Oh hey ${player}!  What's up!  How's your gramps doing?" },
+                { name: 'Player', message: "He's dong about the same, still in good spirits though!" },
+                { name: 'Player', message: "~Hey man, Hazel's asked me to grab some notes off of you, would you happen to have them?" },
+                { name: 'Chester', message: "For sure!" },
+                { name: 'Chester', message: " *Hands over notes*" },
+                { action: () => store.commit('collectedItem', { name: "notes", image: require("@/assets/items/paper.svg") }) },
+                { name: 'Chester', message: "BTW - How is Hazel? she's been acting a little off lately..." },
+
+            ])
         }),
         new NPC({
             name: 'whitehoody',

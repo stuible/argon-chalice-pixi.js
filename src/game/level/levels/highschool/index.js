@@ -50,7 +50,7 @@ export default class {
                 // Check if user has collected all of Hazel's Items
                 if (this.store.state.items.some(item => item.name == "pen")
                     && this.store.state.items.some(item => item.name == "ruler"
-                        && this.store.state.items.some(item => item.name == "paper"))) {
+                        && this.store.state.items.some(item => item.name == "notes"))) {
                     this.goals.originalGirlfriend.collectedItems = true;
                 }
 
