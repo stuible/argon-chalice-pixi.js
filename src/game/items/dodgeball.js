@@ -6,7 +6,7 @@ export default class {
         this.endX = startX < endX ? endX * gridSize : startX * gridSize;
 
 
-        const spriteResource = new PIXI.resources.SVGResource(require("@/assets/items/dodgeball.svg"), { height: gridSize * 1.3, width: gridSize * 1.3 });
+        const spriteResource = new PIXI.resources.SVGResource(require("@/assets/items/dodgeball.svg?data"), { height: gridSize * 1.3, width: gridSize * 1.3 });
         const spriteTexture = PIXI.Texture.from(spriteResource);
 
         this.sprite = PIXI.Sprite.from(spriteTexture);

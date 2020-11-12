@@ -7,7 +7,7 @@ export default function (store, goals, gridSize, levelManager) {
             x: 73,
             y: 60,
             gridSize: gridSize,
-            image: require("@/assets/characters/npc-1.svg"),
+            image: require("@/assets/characters/npc-1.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Garland', message: "Hey ${player}" },)
         }),
         new NPC({
@@ -15,7 +15,7 @@ export default function (store, goals, gridSize, levelManager) {
             x: 72,
             y: 52,
             gridSize: gridSize,
-            image: require("@/assets/characters/npc-2.svg"),
+            image: require("@/assets/characters/npc-2.svg?data"),
             interact: () => {
                 // If the player doens't have the notes yet
                 if (!goals.originalGirlfriend.recievedNotes && goals.originalGirlfriend.spoken) {
@@ -25,7 +25,7 @@ export default function (store, goals, gridSize, levelManager) {
                         { name: 'Player', message: "~Hey man, Hazel's asked me to grab some notes off of you, would you happen to have them?" },
                         { name: 'Chester', message: "For sure!" },
                         { name: 'Chester', message: " *Hands over notes*" },
-                        { action: () => store.commit('collectedItem', { name: "notes", image: require("@/assets/items/paper.svg") }) },
+                        { action: () => store.commit('collectedItem', { name: "notes", image: require("@/assets/items/paper.svg?data") }) },
                         { name: 'Chester', message: "BTW - How is Hazel? she's been acting a little off lately..." },
 
                     ])
@@ -46,7 +46,7 @@ export default function (store, goals, gridSize, levelManager) {
             x: 45,
             y: 68,
             gridSize: gridSize,
-            image: require("@/assets/characters/npc-3.svg"),
+            image: require("@/assets/characters/npc-3.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Bobby', message: "Sup yo?" },)
         }),
         new NPC({
@@ -55,7 +55,7 @@ export default function (store, goals, gridSize, levelManager) {
             y: 78,
             scale: 0.175,
             gridSize: gridSize,
-            image: require("@/assets/characters/sitting-student-1.svg"),
+            image: require("@/assets/characters/sitting-student-1.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Jane', message: "..." },)
         }),
         new NPC({
@@ -64,7 +64,7 @@ export default function (store, goals, gridSize, levelManager) {
             y: 81,
             scale: 0.17,
             gridSize: gridSize,
-            image: require("@/assets/characters/sitting-student-2.svg"),
+            image: require("@/assets/characters/sitting-student-2.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Chloro', message: "Little busy right busy right now ${player}, talk later?" },)
         }),
         new NPC({
@@ -73,7 +73,7 @@ export default function (store, goals, gridSize, levelManager) {
             y: 40,
             scale: 0.17,
             gridSize: gridSize,
-            image: require("@/assets/characters/sitting-student-3.svg"),
+            image: require("@/assets/characters/sitting-student-3.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Bromo', message: "Hmmmmm I have no idea what these symbols mean" },)
         }),
         new NPC({
@@ -82,7 +82,7 @@ export default function (store, goals, gridSize, levelManager) {
             y: 44,
             scale: 0.17,
             gridSize: gridSize,
-            image: require("@/assets/characters/sitting-student-4.svg"),
+            image: require("@/assets/characters/sitting-student-4.svg?data"),
             interact: () => store.commit("addDialogue", { name: 'Floro', message: "I'm soooo lost" },)
         })
     ]

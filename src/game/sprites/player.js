@@ -8,23 +8,23 @@ export default class {
     constructor({ speed, state, walls, x, y }) {
 
         let frontImages = [
-            require("@/assets/player/Front-1.svg"),
-            require("@/assets/player/Front-2.svg"),
-            require("@/assets/player/Front-3.svg"),
-            require("@/assets/player/Front-4.svg"),
+            require("@/assets/player/Front-1.svg?data"),
+            require("@/assets/player/Front-2.svg?data"),
+            require("@/assets/player/Front-3.svg?data"),
+            require("@/assets/player/Front-4.svg?data"),
         ];
         let backImages = [
-            require("@/assets/player/Back-1.svg"),
-            require("@/assets/player/Back-2.svg"),
-            require("@/assets/player/Back-3.svg"),
-            require("@/assets/player/Back-4.svg"),
+            require("@/assets/player/Back-1.svg?data"),
+            require("@/assets/player/Back-2.svg?data"),
+            require("@/assets/player/Back-3.svg?data"),
+            require("@/assets/player/Back-4.svg?data"),
         ];
         let sideImages = [
-            require("@/assets/player/Side-2.svg"),
-            require("@/assets/player/Side-3.svg"),
-            require("@/assets/player/Side-4.svg"),
-            require("@/assets/player/Side-1.svg"),
-            require("@/assets/player/Side-5.svg"),
+            require("@/assets/player/Side-2.svg?data"),
+            require("@/assets/player/Side-3.svg?data"),
+            require("@/assets/player/Side-4.svg?data"),
+            require("@/assets/player/Side-1.svg?data"),
+            require("@/assets/player/Side-5.svg?data"),
         ];
 
         this.textures = {

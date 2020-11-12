@@ -77,11 +77,11 @@ export default class {
             }
         })
 
-        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg"), { scale: this.mapScale });
+        const floorResource = new PIXI.resources.SVGResource(require("@/assets/map/Floors.svg?data"), { scale: this.mapScale });
         const floorTexture = PIXI.Texture.from(floorResource);
         this.floor = PIXI.Sprite.from(floorTexture);
 
-        const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/Walls.svg"), { scale: this.mapScale });
+        const wallResource = new PIXI.resources.SVGResource(require("@/assets/map/Walls.svg?data"), { scale: this.mapScale });
         const wallTexture = PIXI.Texture.from(wallResource);
         this.walls = PIXI.Sprite.from(wallTexture);
 
